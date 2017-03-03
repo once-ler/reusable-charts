@@ -1,0 +1,12 @@
+[ignore]
+.*/node_modules/flow-remove-types/.*
+.*/node_modules/rollup-plugin-flow/.*
+
+[include]
+../node_modules/d3
+../node_modules/dc
+
+[libs]
+
+[options]
+suppress_comment=.*\\$FlowIssue
