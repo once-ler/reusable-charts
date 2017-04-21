@@ -1,7 +1,8 @@
 /* @flow */
 import {setupAxisLabels} from './Axis';
+import {closestRoundTo} from '../util';
 
-export const setBubbleChartDimensions = (chartNames, srcdata, bubbleChartDimensions) => {
+export const setBubbleChartDimensions = ({chartNames, srcdata, data, bubbleChartDimensions, nonZeroOnly}) => {
   const bubbles = _.filter(chartNames, function(d) {
     return d.type == 'bubble';
   });
@@ -82,9 +83,9 @@ export const setBubbleChartDimensions = (chartNames, srcdata, bubbleChartDimensi
   return bubbleChartDimensions;
 };
 
-const constructBubbleChart = el => {
-  const bubbleChart = dc.bubbleChart("#" + id);
-
+const constructBubbleChart = ({id, width, height, dim, nonZeroOnly}) => {
+  const bubbleChart = dc.bubbleChart(id);
+console.log(colorbrewer2)
   bubbleChart
     .width(width / 2 - 10)
     .height(Math.round(height / 1.8))
@@ -135,7 +136,7 @@ const constructBubbleChart = el => {
   return bubbleChart;
 };
 
-const createTooltipForBubbleChart = () => {
+const createTooltipForBubbleChart = ({hierarchyDict, availableDimensionNames, tooltip, tooltipText}) => {
   d3.selectAll('circle.bubble').on('mouseover', () => tooltip.style("visibility", "visible"));
   
   d3.selectAll('circle.bubble').on('mousemove', d => {
@@ -167,7 +168,7 @@ const createTooltipForBubbleChart = () => {
   d3.selectAll('circle.bubble').on('mouseout', () => tooltip.style("visibility", "hidden"));
 };
 
-export const buildBubbleCharts = (bubbleChartDimensions, bubbleCharts) => {
+export const buildBubbleCharts = ({bubbleChartDimensions, bubbleCharts, width, height, legend, nonZeroOnly, hierarchyDict, availableDimensionNames, tooltip, tooltipText}) => {
 
   const createBubbleChart = (dim, i) => {
     const id = "bubble-" + dim.name.replace(/\s/g, '_');
@@ -176,7 +177,7 @@ export const buildBubbleCharts = (bubbleChartDimensions, bubbleCharts) => {
     div.html('<a class="reset" href="' + js + '" style="visibility: hidden;float:right;margin: 0 10px 0 5px;">reset</a><span class="reset" style="visibility: hidden;float:right;">Current filter: <span class="filter"></span></span><div class="clear"></div>');
 
     // 
-    const bubbleChart = constructBubbleChart("#" + id);
+    const bubbleChart = constructBubbleChart({ id: `#${id}`, width, height, dim, nonZeroOnly});
 
     //Hide x axis
     dim.isOrdinal && (() => {
@@ -228,7 +229,7 @@ export const buildBubbleCharts = (bubbleChartDimensions, bubbleCharts) => {
   _.each(bubbleChartDimensions, createBubbleChart);
 
   // Now add tooltips.
-  createTooltipForBubbleChart();
+  createTooltipForBubbleChart({hierarchyDict, availableDimensionNames, tooltip, tooltipText});
 
   return bubbleCharts;
 };

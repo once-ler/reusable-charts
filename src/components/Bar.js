@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import {setupAxisLabels} from './Axis';
 
-export const setBarChartDimensions = (chartNames, srcdata, barChartDimensions) => {
+export const setBarChartDimensions = (chartNames, srcdata, data, barChartDimensions) => {
   const bars = _.filter(chartNames, d => d.type == 'bar');
 
   const createBarChartDimension = h => {
@@ -30,46 +30,50 @@ export const setBarChartDimensions = (chartNames, srcdata, barChartDimensions) =
   return barChartDimensions;
 };
 
-const stream = _.flow([
-  dim => {
-    barChart
-      .width(width / 2 - 10)
-      .height(height / 2.5)
-      .transitionDuration(500) // (optional) define chart transition duration, :default = 500
-      .margins({ top: 10, right: 10, bottom: 40, left: 30 })
-      .dimension(dim.dimension) // set dimension
-      .group(dim.group) // set group
-      .elasticY(true)
-      .xAxisPadding(!dim.isDate ? dim.xpadding : 20)
-      .elasticX(true)
-      .centerBar(!dim.isOrdinal ? true : false)
-      .renderHorizontalGridLines(true);
-    return dim;
-  },
-  dim => {
-    dim.isOrdinal && (() => {
-      dim.domain = _.without(dim.domain, 'NA');
-      barChart.x(d3.scale.ordinal().domain(dim.domain)).xUnits(dc.units.ordinal);
-      setTimeout(barChart.redraw, 100);
-    })();                  
-    return dim;
-  },
-  dim => {
-    !dim.isOrdinal && !dim.isDate && barChart.x(d3.scale.linear().domain(dim.extent));
-    return dim;
-  },
-  dim => {
-    !dim.isOrdinal && dim.isDate &&
-      barChart
-        .width(width - 10)
-        .x(d3.time.scale().domain(dim.extent))
-        .round(d3.time.month.round)
-        .xUnits(d3.time.months);
-    return dim;
-  }
-]);
+const stream = props => {
+  const {barChart, width, height} = props;
 
-export const buildBarCharts = (barChartDimensions, barCharts) => {
+  return _.flow([
+    dim => {
+      barChart
+        .width(width / 2 - 10)
+        .height(height / 2.5)
+        .transitionDuration(500) // (optional) define chart transition duration, :default = 500
+        .margins({ top: 10, right: 10, bottom: 40, left: 30 })
+        .dimension(dim.dimension) // set dimension
+        .group(dim.group) // set group
+        .elasticY(true)
+        .xAxisPadding(!dim.isDate ? dim.xpadding : 20)
+        .elasticX(true)
+        .centerBar(!dim.isOrdinal ? true : false)
+        .renderHorizontalGridLines(true);
+      return dim;
+    },
+    dim => {
+      dim.isOrdinal && (() => {
+        dim.domain = _.without(dim.domain, 'NA');
+        barChart.x(d3.scale.ordinal().domain(dim.domain)).xUnits(dc.units.ordinal);
+        setTimeout(barChart.redraw, 100);
+      })();                  
+      return dim;
+    },
+    dim => {
+      !dim.isOrdinal && !dim.isDate && barChart.x(d3.scale.linear().domain(dim.extent));
+      return dim;
+    },
+    dim => {
+      !dim.isOrdinal && dim.isDate &&
+        barChart
+          .width(width - 10)
+          .x(d3.time.scale().domain(dim.extent))
+          .round(d3.time.month.round)
+          .xUnits(d3.time.months);
+      return dim;
+    }
+  ]);
+};
+
+export const buildBarCharts = ({barChartDimensions, barCharts, width, height}) => {
   const createBarChart = (dim, i) => {
     const id = `bar-${dim.name.replace(/\s/g, '_')}`;
     const div = d3.select("#chart").append("div").attr("id", id);
@@ -79,7 +83,7 @@ export const buildBarCharts = (barChartDimensions, barCharts) => {
 
     const barChart = dc.barChart(`#${id}`);
     
-    stream(dim);
+    stream({ barChart, width, height})(dim);
 /*
     if (dim.isOrdinal) {
       dim.domain = _.without(dim.domain, 'NA');

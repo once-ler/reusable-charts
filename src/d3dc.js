@@ -12,7 +12,8 @@ export default ({
   dateFormat,
   formatDate,
   numberFormat,
-  availableDimensionNames
+  availableDimensionNames,
+  hierarchyDict
 }) => {
 
   let hierarchy;
@@ -24,7 +25,10 @@ export default ({
   //After user has selected
   let chartNames = []; 
 
-  return ({
+  const tooltip = d3.select("#chart").append("div").attr('class', 'message anthracite-gradient t2tip').style("position", "absolute").style("z-index", "10").style("visibility", "hidden");
+  const tooltipText = tooltip.append('div').attr('class', 't2tip').style('padding', '5px');
+  const tooltipArrow = tooltip.append('span').attr('id','tooltip-arrow').attr('class', "block-arrow bottom t2tip").html('<span></span>');  
+  const d3dc = {
 
     setupData: (jso, requestNonZeroOnly) => {
       if (srcdata) return;
@@ -42,7 +46,7 @@ export default ({
 
     updateChart: () => {
       //Cleanup
-      deregisterAllCharts();
+      d3dc.deregisterAllCharts();
 
       /*
       //Add info bubble
@@ -66,18 +70,18 @@ export default ({
       groupAll = data.groupAll();
 
       //pick out user defined dimensions
-      chooseDimensions();
+      d3dc.chooseDimensions();
 
       //setup dimensions for each type of chart (reset)
       setLineChartDimensions(chartNames, srcdata, lineChartDimensions);
-      setBarChartDimensions(chartNames, srcdata, barChartDimensions);
-      setBubbleChartDimensions(chartNames, srcdata, bubbleChartDimensions);
+      setBarChartDimensions(chartNames, srcdata, data, barChartDimensions);
+      setBubbleChartDimensions({chartNames, srcdata, data, bubbleChartDimensions, nonZeroOnly});
 
       //build the charts in this sequence
-      const lines = buildLineCharts(lineChartDimensions, lineCharts);
-      const bars = buildBarCharts(barChartDimensions, barCharts);
-      buildDataCount();
-      const bubbles = buildBubbleCharts(bubbleChartDimensions, bubbleCharts);
+      buildLineCharts(lineChartDimensions, lineCharts);
+      buildBarCharts({barChartDimensions, barCharts, width, height});
+      d3dc.buildDataCount();
+      buildBubbleCharts({bubbleChartDimensions, bubbleCharts, width, height, legend, hierarchyDict, availableDimensionNames, tooltip, tooltipText});
     },
 
     /***
@@ -102,9 +106,9 @@ export default ({
 
     //branch from Jason Davies
     resetAllDimensions: () => {
-      resetDimensions(barChartDimensions);
-      resetDimensions(bubbleChartDimensions);
-      resetDimensions(lineChartDimensions);
+      d3dc.resetDimensions(barChartDimensions);
+      d3dc.resetDimensions(bubbleChartDimensions);
+      d3dc.resetDimensions(lineChartDimensions);
     },
 
     deregisterAllCharts: () => {
@@ -113,7 +117,7 @@ export default ({
       //reset all the filters first
       dc.filterAll();
 
-      resetAllDimensions();
+      d3dc.resetAllDimensions();
 
       //tooltip listeners
       d3.selectAll('circle.bubble').on('mouseover', null);
@@ -135,12 +139,13 @@ export default ({
 
     buildDataCount: () => {
       dataCount = dc.dataCount("#data-count")
-      .dimension(data) // set dimension to all data
-      .group(groupAll); // set group to ndx.groupAll()
+        .dimension(data) // set dimension to all data
+        .group(groupAll); // set group to ndx.groupAll()
 
       setTimeout(() => dc.redrawAll(), 0);
     }
 
-  });
+  };
 
+  return d3dc;
 };

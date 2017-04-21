@@ -9,6 +9,11 @@ const config = {
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
   },
+  resolve: {
+    alias: {
+     'crossfilter': 'crossfilter2'
+    }
+  },
   output: {
     library: 'ReusableCharts',
     libraryTarget: 'umd'
