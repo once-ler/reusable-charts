@@ -1,6 +1,6 @@
 import { setBarChartDimensions, buildBarCharts } from './components/Bar';
-import { setLineChartDimensions, buildLineCharts } from './components/Bar';
-import { setBubbleChartDimensions, buildBubbleCharts } from './components/Bar';
+import { setLineChartDimensions, buildLineCharts } from './components/Line';
+import { setBubbleChartDimensions, buildBubbleCharts } from './components/Bubble';
 import { cleanupLayout } from './util';
 
 export default ({
