@@ -13,15 +13,15 @@ Number.prototype.floorTo = function(nTo) {
   return Math.floor(this * (1 / nTo)) * nTo;
 };
 
-export createTooltip = () => {
+export const createTooltip = () => {
   const tooltip = d3.select("#chart").append("div").attr('class', 'message anthracite-gradient t2tip').style("position", "absolute").style("z-index", "10").style("visibility", "hidden");
   const tooltipText = tooltip.append('div').attr('class', 't2tip').style('padding', '5px');
   const tooltipArrow = tooltip.append('span').attr('id','tooltip-arrow').attr('class', "block-arrow bottom t2tip").html('<span></span>');
 };
 
-export log10 = val => Math.log(val) / Math.LN10;
+export const log10 = val => Math.log(val) / Math.LN10;
 
-export closestRoundTo = (extentMax, tickCount) => {
+export const closestRoundTo = (extentMax, tickCount) => {
   const tickWidth = extentMax / tickCount;
   const numZeros = Math.floor(log10(tickWidth));
   let roundTo = Math.pow(10, numZeros);
@@ -31,7 +31,7 @@ export closestRoundTo = (extentMax, tickCount) => {
   return tickRound;
 };
 
-export disposeSVGLayout = () => {
+export const disposeSVGLayout = () => {
   d3.selectAll(".chart").selectAll("svg").remove();
   /*
   var svg = d3.select('#chart').selectAll('svg');
@@ -42,6 +42,6 @@ export disposeSVGLayout = () => {
   */
 };
 
-export cleanupLayout = () => {
+export const cleanupLayout = () => {
   disposeSVGLayout();
 };

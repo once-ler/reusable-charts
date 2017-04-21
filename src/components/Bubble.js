@@ -1,6 +1,7 @@
 /* @flow */
+import {setupAxisLabels} from './Axis';
 
-const setBubbleChartDimensions = () => {
+export const setBubbleChartDimensions = (chartNames, srcdata, bubbleChartDimensions) => {
   const bubbles = _.filter(chartNames, function(d) {
     return d.type == 'bubble';
   });
@@ -78,6 +79,7 @@ const setBubbleChartDimensions = () => {
 
   _.each(bubbles, createBubbleChartDimension);
 
+  return bubbleChartDimensions;
 };
 
 const constructBubbleChart = el => {
@@ -165,7 +167,7 @@ const createTooltipForBubbleChart = () => {
   d3.selectAll('circle.bubble').on('mouseout', () => tooltip.style("visibility", "hidden"));
 };
 
-export buildBubbleCharts = function () {
+export const buildBubbleCharts = (bubbleChartDimensions, bubbleCharts) => {
 
   const createBubbleChart = (dim, i) => {
     const id = "bubble-" + dim.name.replace(/\s/g, '_');

@@ -1,5 +1,4 @@
 /* @flow */
-
 export {
   chart$Reduce as Reduce,
   chart$ReduceSum as ReduceSum,
@@ -10,4 +9,6 @@ export {
   chart$LineChart as LineChart,
   chart$BarChart as BarChart,
   chart$Dim as Dim
-} from './chart'
+} from './types';
+
+export { default as Dcf } from './Dcf';

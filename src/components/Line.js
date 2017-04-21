@@ -1,6 +1,6 @@
 /* @flow */
 
-export setLineChartDimensions = () => {
+export const setLineChartDimensions = (chartNames, srcdata, lineChartDimensions) => {
   const lines = _.filter(chartNames, function (d) { return d.type == 'line'; });
   
   const createLineChartDimension = h => {
@@ -20,9 +20,11 @@ export setLineChartDimensions = () => {
   };
 
   _.each(lines, createLineChartDimension);
+
+  return lineChartDimensions;
 };
 
-export buildLineCharts = () => {
+export const buildLineCharts = (lineChartDimensions, lineCharts) => {
   const createLineChart = (dim, i) => {
     const id = "line-" + dim.name.replace(/\s/g, '_');
     const div = d3.select("#chart").append("div").attr("id", id);
@@ -74,4 +76,6 @@ export buildLineCharts = () => {
   };
 
   _.each(lineChartDimensions, createLineChart);
+
+  return lineCharts;
 };

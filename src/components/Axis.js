@@ -1,6 +1,6 @@
 /* @flow */
 
-const setupAxisLabels = (id, lables) => {
+export const setupAxisLabels = (id, lables) => {
   const xtitle = d3.select('#' + id + ' svg').selectAll('.x.title').data([[0]]);
   xtitle.enter().append('text')
     .attr("class", "x title")
@@ -31,5 +31,3 @@ const setupAxisLabels = (id, lables) => {
   xlabels.text(lables['xlabel'].text);
   ylabels.text(lables['ylabel'].text);
 };
-
-export setupAxisLabels;

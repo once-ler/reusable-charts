@@ -1,7 +1,8 @@
 /* @flow */
 import _ from 'lodash';
+import {setupAxisLabels} from './Axis';
 
-export setBarChartDimensions = () => {
+export const setBarChartDimensions = (chartNames, srcdata, barChartDimensions) => {
   const bars = _.filter(chartNames, d => d.type == 'bar');
 
   const createBarChartDimension = h => {
@@ -25,6 +26,8 @@ export setBarChartDimensions = () => {
   };
 
   _.each(bars, createBarChartDimension);
+
+  return barChartDimensions;
 };
 
 const stream = _.flow([
@@ -66,7 +69,7 @@ const stream = _.flow([
   }
 ]);
 
-export buildBarCharts = () => {
+export const buildBarCharts = (barChartDimensions, barCharts) => {
   const createBarChart = (dim, i) => {
     const id = `bar-${dim.name.replace(/\s/g, '_')}`;
     const div = d3.select("#chart").append("div").attr("id", id);
@@ -117,4 +120,6 @@ export buildBarCharts = () => {
   };
 
   _.each(barChartDimensions, createBarChart);
+
+  return barCharts;
 };
