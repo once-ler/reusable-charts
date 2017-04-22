@@ -1,4 +1,6 @@
 /* @flow */
+import 'dc/dc.css';
+
 export {
   chart$Reduce as Reduce,
   chart$ReduceSum as ReduceSum,

@@ -40,7 +40,7 @@ export const buildLineCharts = (lineChartDimensions, lineCharts) => {
       .width(width / 2 - 10)
       .height(height / 2)
       .transitionDuration(500)
-      .margins({ top: 0, right: 10, bottom: 40, left: 30 })
+      .margins({ top: 0, right: 10, bottom: 40, left: 50 })
       .dimension(dim.dimension)
       .group(dim.group)
       .elasticY(true)

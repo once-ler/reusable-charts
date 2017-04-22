@@ -1,6 +1,7 @@
 /* @flow */
 import _ from 'lodash';
 import {setupAxisLabels} from './Axis';
+import './Bar.css';
 
 export const setBarChartDimensions = (chartNames, srcdata, data, barChartDimensions) => {
   const bars = _.filter(chartNames, d => d.type == 'bar');
@@ -32,14 +33,14 @@ export const setBarChartDimensions = (chartNames, srcdata, data, barChartDimensi
 
 const stream = props => {
   const {barChart, width, height} = props;
-
+console.log(barChart)
   return _.flow([
     dim => {
       barChart
         .width(width / 2 - 10)
         .height(height / 2.5)
         .transitionDuration(500) // (optional) define chart transition duration, :default = 500
-        .margins({ top: 10, right: 10, bottom: 40, left: 30 })
+        .margins({ top: 10, right: 10, bottom: 40, left: 50 })
         .dimension(dim.dimension) // set dimension
         .group(dim.group) // set group
         .elasticY(true)

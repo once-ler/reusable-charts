@@ -92,7 +92,7 @@ const constructBubbleChart = ({id, width, height, dim, nonZeroOnly}) => {
       top: 10,
       right: 20,
       bottom: 40,
-      left: 25
+      left: 50
     })
     .dimension(dim.dimension) //We need to filter here so the chart will not display zero values
     .group(dim.group)
