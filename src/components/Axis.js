@@ -1,11 +1,10 @@
 /* @flow */
-
-export const setupAxisLabels = (id, lables) => {
+export const setupAxisLabels = (id, labels) => {
   const xtitle = d3.select('#' + id + ' svg').selectAll('.x.title').data([[0]]);
   xtitle.enter().append('text')
     .attr("class", "x title")
     .attr("text-anchor", "end")
-    .attr("x", lables['title'].x)
+    .attr("x", labels['title'].x)
     .attr("y", 25);
     xtitle.exit().remove();
 
@@ -13,8 +12,8 @@ export const setupAxisLabels = (id, lables) => {
   xlabels.enter().append('text')
     .attr("class", "x label")
     .attr("text-anchor", "end")
-    .attr("x", lables['xlabel'].x)
-    .attr("y", lables['xlabel'].y);
+    .attr("x", labels['xlabel'].x)
+    .attr("y", labels['xlabel'].y);
     xlabels.exit().remove();
 
   const ylabels = d3.select('#' + id + ' svg').selectAll('.y.label').data([[0]]);
@@ -23,11 +22,11 @@ export const setupAxisLabels = (id, lables) => {
     .attr("text-anchor", "end")
     .attr("y", 6)
     .attr("dy", ".75em")
-    .attr("x", lables['ylabel'].x)
+    .attr("x", labels['ylabel'].x)
     .attr("transform", "rotate(-90)")
     ylabels.exit().remove();
 
-  xtitle.text(lables['title'].text);
-  xlabels.text(lables['xlabel'].text);
-  ylabels.text(lables['ylabel'].text);
+  xtitle.text(labels['title'].text);
+  xlabels.text(labels['xlabel'].text);
+  ylabels.text(labels['ylabel'].text);
 };

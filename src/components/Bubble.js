@@ -85,7 +85,6 @@ export const setBubbleChartDimensions = ({chartNames, srcdata, data, bubbleChart
 
 const constructBubbleChart = ({id, width, height, dim, nonZeroOnly}) => {
   const bubbleChart = dc.bubbleChart(id);
-console.log(colorbrewer2)
   bubbleChart
     .width(width / 2 - 10)
     .height(Math.round(height / 1.8))
@@ -99,7 +98,8 @@ console.log(colorbrewer2)
     .group(dim.group)
     .transitionDuration(1500)
     // .colors(colorbrewer2.Blues[9])
-    .colors(colorbrewer2.Greens[4])
+    // .colors(colorbrewer2.Greens[4])
+    .ordinalColors(colorbrewer2.Greens[4])
     .colorDomain(dim.colorExtent)
     .colorAccessor(p => Math.floor(p.value['downtimeminutes'] / p.value.count))
     .keyAccessor(p => {
