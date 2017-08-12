@@ -1,4 +1,4 @@
-export const crosshair = showreel => (event) => {
+export const crosshair = showreel => event => {
   event.stopPropagation();
 
   let x = event.pageX - $(window)
