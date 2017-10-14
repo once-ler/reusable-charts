@@ -1,5 +1,18 @@
-import {summarize} from './utils/summarize';
-import {crosshair} from './utils/crosshair';
+import {
+  createDateLabel,
+  crosshair,
+  displayValueLabelsForPositionX,
+  drawBetterXAxis,
+  getValueForPositionXFromData,
+  handleMouseOutGraph,
+  perRound,
+  setXAxis,
+  setYAxis,
+  solve,
+  summarize,
+  switchXAxis,
+  zerosPad
+} from './utils';
 
 $.showreel = $.showreel || {};
 $.extend($.showreel, {
@@ -131,9 +144,33 @@ $.extend($.showreel, {
       .empty();
   },
 
+  createDateLabel: createDateLabel(this),
+
+  crosshair: crosshair(this),
+
+  displayValueLabelsForPositionX: displayValueLabelsForPositionX(this),
+
+  drawBetterXAxis: drawBetterXAxis(this),
+
+  getValueForPositionXFromData: getValueForPositionXFromData(this),
+
+  handleMouseOutGraph: handleMouseOutGraph(this),
+
+  perRound: perRound(this),
+
+  setXAxis: setXAxis(this),
+
+  setYAxis: setYAxis(this),
+
+  solve: solve(this),
+
   summarize: summarize(this),
 
-  crosshair: crosshair(this)
+  switchXAxis: switchXAxis(this),
+
+  zerosPad: zerosPad(this)
+
+
 });
 
 export default $.showreel;
