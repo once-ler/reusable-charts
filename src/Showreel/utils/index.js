@@ -1,5 +1,6 @@
 export {createDataLabel} from './createDataLabel';
 export {crosshair} from './crosshair';
+export {drawBetterXAxis} from './drawBetterXAxis';
 export {displayValueLabelsForPositionX} from './displayValueLabelsForPositionX';
 export {getValueForPositionXFromData} from './getValueForPositionXFromData';
 export {handleMouseOutGraph} from './handleMouseOutGraph';
