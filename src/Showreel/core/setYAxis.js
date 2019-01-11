@@ -1,10 +1,10 @@
 export const setYAxis = showreel => () => {
-  const g = $.showreel.svg.selectAll("g.symbol");
+  const g = showreel.svg.selectAll("g.symbol");
   
   g.each(function(d) {
     const y = d3.scale.linear()
       .domain([0, d.maxActualY])
-      .range([$.showreel.gHeight, 0]);
+      .range([showreel.gHeight, 0]);
     const yaxis = d3.svg.axis()
       .scale(y)
       .orient("left");

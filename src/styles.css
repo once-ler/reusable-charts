@@ -1,0 +1,71 @@
+.axis {
+  fill: #fff; stroke: none;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  color: #fff;
+}
+.tspan-0 {
+  stroke: none;
+  /*fill:#4099FF;*/
+  font-size: 14px;
+}
+/*percentage difference*/
+.tspan-1 {
+  stroke: none;
+  fill:#000;
+  font-size: 18px;
+}
+/*compared to */
+.tspan-2 {
+  stroke: none;
+  fill:#000;
+  font-size: 10px;
+}
+.svgTitle {
+  stroke: none;
+  fill:#4099FF;
+  font-size: 16px;
+}
+.svgTitle2 {
+  stroke: none;
+  fill:#666;
+  font-size: 14px;
+}
+
+.x.axis.x0.axis0 line {
+  stroke-opacity: 0.5;
+}
+.x.axis.x1.axis1 line {
+  stroke-opacity: 0.3;
+}
+.x.axis.x0.axis0 text {
+  stroke: none;
+  fill: #333;
+  font-size: 8px;
+}
+.x.axis.x1.axis1 text {
+  stroke: none;
+  fill: #333;
+}
+.y.axis.left text {
+  stroke: none;
+  fill: #666;
+}
+.container {
+  position: relative;
+}
+#vertical {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  background: #000;
+  z-index:2;
+  width: 1px;
+  height: 100%;
+  pointer-events: none;
+}

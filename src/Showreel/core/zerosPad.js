@@ -1,5 +1,6 @@
 export const zerosPad = showreel => (rndVal, decPlaces) => {
   let valStrg = rndVal.toString(); // Convert the number to a string
+  let decPartsecnum;
   const decLoc = valStrg.indexOf("."); // Locate the decimal point
   // check for a decimal 
   if (decLoc == -1) {
@@ -16,3 +17,5 @@ export const zerosPad = showreel => (rndVal, decPlaces) => {
   }
   return valStrg;
 };
+
+export default zerosPad

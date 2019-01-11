@@ -1,4 +1,5 @@
 /* @flow */
+import './styles.css';
 import 'dc/dc.css';
 
 export {

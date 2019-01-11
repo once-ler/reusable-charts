@@ -29,8 +29,8 @@ export const summarize = showreel => () => {
         secnum: fl[1].y
       };
 
-      val = $.showreel.solve(form);
-      retval.pctChg = `${val.direction + $.showreel.perRound(val.percentchange)}%`;
+      val = showreel.solve(form);
+      retval.pctChg = `${val.direction + showreel.perRound(val.percentchange)}%`;
     } else {
       retval.values = [{
         y: 0
@@ -42,11 +42,11 @@ export const summarize = showreel => () => {
   });
 
   // summary
-  const summary = _.map(diff1, d => `<li class="clear chead"><div class="c0">${d.key}</div><div class="c1">${$.showreel.formatCurrency(d.values[1].y)}</div><div class="c2">${$.showreel.formatCurrency(d.values[0].y)}</div><div class="c3">${d.pctChg}</div></li>`);
+  const summary = _.map(diff1, d => `<li class="clear chead"><div class="c0">${d.key}</div><div class="c1">${showreel.formatCurrency(d.values[1].y)}</div><div class="c2">${showreel.formatCurrency(d.values[0].y)}</div><div class="c3">${d.pctChg}</div></li>`);
 
   let str = _.reduce(summary, (memo, num) => memo + num, '');
   const fc = _.first(diff1);
-  str = `<li class="clear"><div class="c0"></div><div class="c1">${$.showreel.format2(fc.values[1].date)}</div><div class="c2">${$.showreel.format2(fc.values[0].date)}</div><div class="c3">% chg</div></li>${str}`
+  str = `<li class="clear"><div class="c0"></div><div class="c1">${showreel.format2(fc.values[1].date)}</div><div class="c2">${showreel.format2(fc.values[0].date)}</div><div class="c3">% chg</div></li>${str}`
   $(str)
     .appendTo($('#summary1'));
 
@@ -55,7 +55,7 @@ export const summarize = showreel => () => {
     d3.selectAll('#summary1 li div.c0')
       .each(function(d) {
         d3.select(this)
-          .style("color", $.showreel.darkerColor(d3.select(this)
+          .style("color", showreel.darkerColor(d3.select(this)
             .text()));
       });
   }, 300);

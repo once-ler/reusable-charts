@@ -1,6 +1,6 @@
 export const setXAxis = showreel => (g, h, i, o) => {
   const xaxis = d3.svg.axis()
-    .scale($.showreel.x)
+    .scale(showreel.x)
     .ticks(50)
     .tickSize(-h);
   
@@ -16,8 +16,8 @@ export const setXAxis = showreel => (g, h, i, o) => {
 
   let y = 0;
   rule.each(function(d) {
-    if (!$.showreel.data[y].isDate) {
-      const r = $.showreel.data[y].keys;
+    if (!showreel.data[y].isDate) {
+      const r = showreel.data[y].keys;
       const text = d3.select(this)
         .selectAll('text')
         .attr("transform", "rotate(-55, -10,-12)")
