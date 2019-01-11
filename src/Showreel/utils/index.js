@@ -1,4 +1,4 @@
-export {createDataLabel} from './createDataLabel';
+export {createDateLabel} from './createDateLabel';
 export {crosshair} from './crosshair';
 export {drawBetterXAxis} from './drawBetterXAxis';
 export {displayValueLabelsForPositionX} from './displayValueLabelsForPositionX';

@@ -1,4 +1,4 @@
-exprot const bars = showreel => () => {
+export const bars = showreel => () => {
   $.showreel.x = d3.scale.ordinal()
     .domain($.showreel.data[0].values.map(d => d.date))
     .rangeBands([0, $.showreel.width - $.showreel.margin.right], .1);

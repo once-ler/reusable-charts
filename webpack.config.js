@@ -36,7 +36,7 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } })
+    // new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } })
   )
 } else {
   config.entry = ['./example/index.js'];

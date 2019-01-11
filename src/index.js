@@ -14,3 +14,5 @@ export {
 } from './types';
 
 export { default as Dcf } from './Dcf';
+
+export { default as Showreel } from './Showreel'
