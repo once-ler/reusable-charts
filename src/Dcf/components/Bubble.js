@@ -7,7 +7,7 @@ export const setBubbleChartDimensions = ({chartNames, srcdata, data, bubbleChart
     return d.type == 'bubble';
   });
 
-  const createBubbleChartDimension = h => {            
+  const createBubbleChartDimension = h => {
     let possibleValues = _.chain(srcdata).map(h.name).compact().value();
     if (possibleValues.length == 0)
       return;
@@ -27,7 +27,9 @@ export const setBubbleChartDimensions = ({chartNames, srcdata, data, bubbleChart
     dim.extent = d3.extent(possibleValues);
     dim.tickRound = closestRoundTo(dim.extent[1], h.name.search(/\boilage\b|\bgearboxage\b/g) != -1 ? 8 : 5);
     // console.log(closestRoundTo(20, 8));
-    dim.dimension = data.dimension(d => !h.isOrdinal ? (d[h.name] ? (+d[h.name]).ceilTo(tickRound) : 0) : dim.ordinalValues[d[h.name]]);
+    dim.dimension = data.dimension(d =>
+      !h.isOrdinal ? (d[h.name] ? (+d[h.name]).ceilTo(tickRound) : 0) : (dim.ordinalValues[d[h.name]] || 0)
+    );
     // dim.extent = d3.extent(possibleValues);
 
     dim.group = dim.dimension.group().reduce(

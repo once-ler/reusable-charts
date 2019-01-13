@@ -33,7 +33,7 @@ export const setBarChartDimensions = (chartNames, srcdata, data, barChartDimensi
 
 const stream = props => {
   const {barChart, width, height} = props;
-console.log(barChart)
+// console.log(barChart)
   return _.flow([
     dim => {
       barChart

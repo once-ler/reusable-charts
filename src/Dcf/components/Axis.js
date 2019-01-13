@@ -15,7 +15,7 @@ export const setupAxisLabels = (id, labels) => {
     .attr("x", labels['xlabel'].x)
     .attr("y", labels['xlabel'].y);
     xlabels.exit().remove();
-console.log(labels['ylabel'].x)
+
   const ylabels = d3.select('#' + id + ' svg').selectAll('.y.label').data([[0]]);
   ylabels.enter().append("text")
     .attr("class", "y label")
