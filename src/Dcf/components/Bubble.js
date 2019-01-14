@@ -32,6 +32,7 @@ export const setBubbleChartDimensions = ({chartNames, srcdata, data, bubbleChart
     );
     // dim.extent = d3.extent(possibleValues);
 
+    // https://github.com/crossfilter/crossfilter/wiki/Crossfilter-Gotchas
     dim.group = dim.dimension.group().reduce(
       //add
       (p, v) => {
@@ -131,7 +132,8 @@ const constructBubbleChart = ({id, width, height, dim, nonZeroOnly}) => {
     .renderLabel(true)
     .renderTitle(false)
     .label(p => {
-      if (p.value.count == 0) return "";
+      // p.key == 0 means NA, hide it
+      if (p.key === 0 || p.value.count === 0) return '';
       return !dim.isOrdinal ? p.value.count : dim.ordinalValuesInverted[p.key];
     });
 

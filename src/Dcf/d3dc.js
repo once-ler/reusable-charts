@@ -93,7 +93,6 @@ export default ({
 
       const h1 = hierarchy.slice();
       // h1.unshift('downtimeminutes');
-
       //reset
       chartNames = [];
       _.each(h1, d => {
