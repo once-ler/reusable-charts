@@ -1,9 +1,12 @@
 /* @flow */
-export const initDimensions = showreel => (_height) => {
+export const initDimensions = showreel => () => {
   showreel.width = showreel.width - showreel.margin.right - showreel.margin.left;
   showreel.originalWidth = showreel.width;
-  showreel.gHeight = showreel.data.length == 1 ? 180 : (showreel.data.length == 2 ? 105 : 65);
+  showreel.gHeight = showreel.data.length == 1 ? 180 : (showreel.data.length == 2 ? 105 : 85);
   showreel.height = (showreel.gHeight) * showreel.data.length;
+
+  console.log(showreel.height)
+
   showreel.x = d3.time.scale()
     .range([0, showreel.width - showreel.margin.right]);
   showreel.y = d3.scale.linear()
@@ -39,8 +42,8 @@ export const initDimensions = showreel => (_height) => {
     .width($('#contentcolumn') + 'px');
 
   showreel.svgWidth = showreel.width + showreel.margin.right + showreel.margin.left;
-  //showreel.svgHeight = showreel.height + showreel.margin.top + showreel.margin.bottom;
-  showreel.svgHeight = (85 * 4) + showreel.margin.top + showreel.margin.bottom;
+  showreel.svgHeight = showreel.height + showreel.margin.top + showreel.margin.bottom;
+  // showreel.svgHeight = (85 * 4) + showreel.margin.top + showreel.margin.bottom;
 
   showreel.svg = d3.select('#' + showreel.chartElementName)
     .append("svg")

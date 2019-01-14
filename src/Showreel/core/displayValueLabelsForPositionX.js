@@ -22,6 +22,7 @@ export const displayValueLabelsForPositionX = showreel => xPosition => {
     try {
       g.select('text.date-label tspan.tspan-0')
         .text(function(d) {
+          if (typeof dateToShow === 'undefined') return '';
           return d.isDate ? showreel.format2(new Date(dateToShow)) : dateToShow
         });
 

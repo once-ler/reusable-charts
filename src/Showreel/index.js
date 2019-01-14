@@ -2,7 +2,7 @@
 global.$ = require('jquery')
 
 import {
-  drawLines
+  drawLines, drawHorizons
 } from './draw'
 
 import {
@@ -106,6 +106,10 @@ const Showreel = {
     return drawBetterXAxis(this)()
   },
 
+  drawHorizons() {
+    return drawHorizons(this)()
+  },
+
   drawLines() {
     return drawLines(this)()
   },
@@ -131,8 +135,8 @@ const Showreel = {
     return hoverHelper(this)()
   },
 
-  initDimensions(_height){
-    return initDimensions(this)(_height)
+  initDimensions(){
+    return initDimensions(this)()
   },
 
   // A line generator, for the dark stroke.
