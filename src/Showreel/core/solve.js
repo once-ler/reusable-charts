@@ -8,6 +8,7 @@ export const solve = showreel => form => {
     response.difference = "There is no change.";
   }
 
+  /*
   if (orignum - secnum > 0) {
     response.difference = orignum - secnum;
     response.percentchange = Math.abs((response.difference / orignum) * 100);
@@ -15,11 +16,13 @@ export const solve = showreel => form => {
 
   if (orignum - secnum < 0) {
     response.difference = secnum - orignum;
-    response.percentchange = Math.abs((response.difference / orignum) * 100);
+    response.percentchange = Math.abs((response.difference / secnum) * 100);
   }
+*/
 
-  //http://www.calculatorsoup.com/calculators/algebra/percentagechange.php
-  //Percentage change equals the change in value divided by the absolute value of the original value, multiplied by 100.
+  response.difference = secnum - orignum;
+  response.percentchange = Math.abs((response.difference / secnum) * 100);
+
   if (orignum > secnum) {
     // " % decrease";
     response.direction = "-";
@@ -29,5 +32,6 @@ export const solve = showreel => form => {
     // " % increase";
     response.direction = "+";
   }
+
   return response;
 };

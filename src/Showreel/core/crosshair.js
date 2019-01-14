@@ -10,7 +10,7 @@ export const crosshair = showreel => {
     const diff = $(`#${showreel.chartElementName} svg`)
       .width() / showreel.originalWidth;
     const marginLeft = diff * showreel.margin.left;
-    const marginRight = diff * (showreel.margin.right - 5); //pad just a little to coerce the crosshair to read accurately
+    const marginRight = diff * (showreel.margin.right + 5); //pad just a little to coerce the crosshair to read accurately
 
     x = x - $("#" + showreel.chartElementName)
       .offset()

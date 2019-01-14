@@ -64,6 +64,7 @@ const Showreel = {
   legendFontSize: 12,
   justKeys: [],
   firstLabel: true,
+  monthsCovered: 24, // Total number of months in the date range, used to calculate ticks for xAxis
 
   // An axis generator, for the dark stroke.
   axis() { 
@@ -117,6 +118,8 @@ const Showreel = {
   format: d3.time.format("%Y"),
 
   format2: d3.time.format("%b %Y"),
+
+  format3: d3.time.format("%b %_d %Y"),
 
   formatPercent: d3.format(".2f"),
 

@@ -1,19 +1,36 @@
 /* @flow */
+import moment from 'moment'
+
 export const initDimensions = showreel => () => {
   showreel.width = showreel.width - showreel.margin.right - showreel.margin.left;
   showreel.originalWidth = showreel.width;
-  showreel.gHeight = showreel.data.length == 1 ? 180 : (showreel.data.length == 2 ? 105 : 85);
-  showreel.height = (showreel.gHeight) * showreel.data.length;
+  showreel.gHeight = showreel.data.length == 1 ? 180 : (showreel.data.length == 2 ? 105 : 65);
+  showreel.height = (showreel.gHeight * showreel.data.length) + (2 * (showreel.margin.top + showreel.margin.bottom));
 
-  console.log(showreel.height)
-
-  showreel.x = d3.time.scale()
-    .range([0, showreel.width - showreel.margin.right]);
   showreel.y = d3.scale.linear()
     .range([showreel.gHeight, 0]);
+
+  showreel.yAxis = d3.svg.axis()
+    .scale(showreel.y)
+    .ticks(4)
+    .orient("right");
   
+  const dateRange = _.reduce(showreel.data, (m, d) => {
+    if (m.min == 0 || d.minDate < m.min)
+      m.min = d.minDate
+
+    if (m.max == 0 || d.maxDate > m.max)
+      m.max = d.maxDate
+
+    return m;
+  }, {min: 0, max: 0});
+  
+  const c = moment(dateRange.max).diff(moment(dateRange.min), 'months')
+  showreel.monthsCovered = c;
+
   showreel.xAxis = d3.time.scale()
     .range([0, showreel.width - showreel.margin.right]); //used by mousemove
+/**  
   showreel.xAxis.domain([
     d3.min(showreel.data, function(d) {
       return d.values[0].date;
@@ -22,13 +39,19 @@ export const initDimensions = showreel => () => {
       return d.values[d.values.length - 1].date;
     })
   ]);
+**/
+  showreel.xAxis.domain([dateRange.min, dateRange.max])
 
-  showreel.yAxis = d3.svg.axis()
-    .scale(showreel.y)
-    .ticks(4)
-    .orient("right");
-
+  showreel.x = d3.time.scale()
+    .range([0, showreel.width - showreel.margin.right]);
+  
   // Compute the minimum and maximum date across symbols. (for axis)
+  
+  showreel.x.domain([dateRange.min, dateRange.max])
+
+  // console.log(dateRange.max)
+  
+  /*
   showreel.x.domain([
     d3.min(showreel.data, function(d) {
       return d.values[0].date;
@@ -37,6 +60,7 @@ export const initDimensions = showreel => () => {
       return d.values[d.values.length - 1].date;
     })
   ]);
+  */
 
   $('#contentcolumn')
     .width($('#contentcolumn') + 'px');

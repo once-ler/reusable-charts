@@ -1,7 +1,11 @@
+import moment from 'moment'
+
 export const setXAxis = showreel => (g, h, i, o) => {
   const xaxis = d3.svg.axis()
     .scale(showreel.x)
-    .ticks(50)
+    // .ticks(d < 10 ? 10 : (d > 40 ? 25 : d))
+    .ticks(showreel.monthsCovered < 4 ? 10 : 25)
+    // .ticks(10)
     .tickSize(-h);
   
   const rule = g.selectAll(`.x.axis.x${i}.axis${i}`)

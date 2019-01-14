@@ -8,6 +8,7 @@ export const displayValueLabelsForPositionX = showreel => xPosition => {
     g.select("text.date-label tspan.tlegend-value")
       .text((d, i) => {
         const valuesForX = showreel.getValueForPositionXFromData(xPosition, d);
+        
         dateToShow = d.isDate ? valuesForX.date : d.keys[valuesForX.date];
         let response;
 

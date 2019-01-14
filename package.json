@@ -1,6 +1,6 @@
 {
   "name": "reusable-charts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "main": "lib/index.js",
   "jsnext:main": "dist/reusable-charts.es.js",
@@ -41,7 +41,8 @@
     "d3": "^3.5.17",
     "dc": "^2.0.2",
     "jquery": "^3.3.1",
-    "lodash": "^4.15.0"
+    "lodash": "^4.15.0",
+    "moment": "^2.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",

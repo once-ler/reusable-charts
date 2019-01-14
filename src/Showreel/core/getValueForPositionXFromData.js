@@ -3,9 +3,9 @@ export const getValueForPositionXFromData = showreel => (xPosition, d) => {
   let found;
 
   if (xValue > 0) {
-    // _.all(d.values, e => {
+    
     d.values.every(e => {
-      const test = e.date > xValue;
+      const test = e.date.getMonth() === xValue.getMonth() && e.date.getYear() == xValue.getYear();
       if (test) found = e;
       return !test;
     });
