@@ -5,7 +5,6 @@ export const crosshair = showreel => {
 
     let x = d3.event.pageX
 
-    // $('#vertical').css('left', `${x}px`);
     d3.select('#vertical').style('left', `${x}px`)
 
     const sel = d3.select(`#${showreel.chartElementName} svg`).node()

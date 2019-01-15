@@ -7,15 +7,7 @@ export const hoverHelper = showreel => () => {
 
   chart.on('mousemove', showreel.crosshair())
   chart.on('mouseout', showreel.handleMouseOutGraph())
-  
-  /*
-  $('#' + showreel.chartElementName)
-    .bind({
-      mousemove: showreel.crosshair(),
-      mouseout: showreel.handleMouseOutGraph()
-    });
-  */
- 
+
   showreel.createDateLabel();
 
   setTimeout(() => {

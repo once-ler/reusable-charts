@@ -13,9 +13,11 @@ export const resizeHelper = showreel => () => {
 
     const aspect = box.width / box.height;
     const targetWidth = boxParent.width;
-console.log(targetWidth)
+
     sel.attr("width", targetWidth);
     sel.attr("height", Math.round(targetWidth / aspect) + showreel.margin.bottom);
+
+    d3.select('#vertical').style('left', `${boxParent.x}px`)
   }  
 
   d3.select(window).on('resize', resize);
