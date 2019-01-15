@@ -1,6 +1,4 @@
 /* @flow */
-global.$ = require('jquery')
-
 import {
   drawLines, drawHorizons
 } from './draw'
@@ -30,6 +28,7 @@ import {
   switchXAxis,
   translateHelper,
   translateHelperLabels,
+  triggerWindowResize,
   vanish,
   zerosPad
 } from './core';
@@ -193,6 +192,10 @@ const Showreel = {
 
   translateHelperLabels() {
     return translateHelperLabels(this)()
+  },
+
+  triggerWindowResize() {
+    return triggerWindowResize(this)()
   },
 
   vanish() {

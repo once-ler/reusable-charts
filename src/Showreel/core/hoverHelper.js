@@ -1,12 +1,21 @@
 /* @flow */
 
 export const hoverHelper = showreel => () => {
+  const chart = d3.select('#' + showreel.chartElementName)
+  chart.on('mousemove', null)
+  chart.on('mouseout', null)
+
+  chart.on('mousemove', showreel.crosshair())
+  chart.on('mouseout', showreel.handleMouseOutGraph())
+  
+  /*
   $('#' + showreel.chartElementName)
     .bind({
       mousemove: showreel.crosshair(),
       mouseout: showreel.handleMouseOutGraph()
     });
-
+  */
+ 
   showreel.createDateLabel();
 
   setTimeout(() => {

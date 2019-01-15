@@ -15,6 +15,7 @@ export const initDimensions = showreel => () => {
     .ticks(4)
     .orient("right");
   
+  /*
   const dateRange = _.reduce(showreel.data, (m, d) => {
     if (m.min == 0 || d.minDate < m.min)
       m.min = d.minDate
@@ -24,7 +25,13 @@ export const initDimensions = showreel => () => {
 
     return m;
   }, {min: 0, max: 0});
-  
+  */
+
+  const dateRange = {
+    min: d3.min(showreel.data, d => d.values[0].date),
+    max: d3.max(showreel.data, d => d.values[d.values.length - 1].date) 
+  }
+
   const c = moment(dateRange.max).diff(moment(dateRange.min), 'months')
   showreel.monthsCovered = c;
 
@@ -62,13 +69,9 @@ export const initDimensions = showreel => () => {
   ]);
   */
 
-  $('#contentcolumn')
-    .width($('#contentcolumn') + 'px');
-
   showreel.svgWidth = showreel.width + showreel.margin.right + showreel.margin.left;
   showreel.svgHeight = showreel.height + showreel.margin.top + showreel.margin.bottom;
-  // showreel.svgHeight = (85 * 4) + showreel.margin.top + showreel.margin.bottom;
-
+  
   showreel.svg = d3.select('#' + showreel.chartElementName)
     .append("svg")
     .attr("width", showreel.svgWidth)

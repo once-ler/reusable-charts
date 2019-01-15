@@ -1,24 +1,26 @@
 /* @flow */
 export const resizeHelper = showreel => () => {
-  $(window)
-    .unbind("resize");
+  d3.select(window).on('resize', null);
+  
+  const resize = () => {
+    d3.event.stopPropagation();
+    
+    const sel = d3.select(`#${showreel.chartElementName} svg`)
+    const chart = sel.node()
+    const container = chart.parentNode
+    const box = chart.getBoundingClientRect()
+    const boxParent = container.getBoundingClientRect() 
 
-  const chart = $("#" + showreel.chartElementName + " svg");
-  const aspect = chart.width() / chart.height(),
-    container = chart.parent();
+    const aspect = box.width / box.height;
+    const targetWidth = boxParent.width;
+console.log(targetWidth)
+    sel.attr("width", targetWidth);
+    sel.attr("height", Math.round(targetWidth / aspect) + showreel.margin.bottom);
+  }  
 
-  $(window)
-    .bind({
-      resize: function(event) {
-        event.stopPropagation();
-        const targetWidth = container.width(); // -$("#sidebar-right").width() - substractLeft;
-        chart.attr("width", targetWidth);
-        chart.attr("height", Math.round(targetWidth / aspect));
-      }
-    });
+  d3.select(window).on('resize', resize);
 
-  $(window)
-    .trigger('resize');
+  showreel.triggerWindowResize()
 }
 
 export default resizeHelper

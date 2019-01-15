@@ -29,7 +29,7 @@ export const config = showreel => (options) => {
 
     setTimeout(() => {
       showreel.resizeOnce = true;
-      $(window).trigger('resize');
+      showreel.triggerWindowResize();
     }, 400);
   }
 }
