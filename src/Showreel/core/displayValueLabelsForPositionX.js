@@ -1,3 +1,4 @@
+/* @flow */
 export const displayValueLabelsForPositionX = showreel => xPosition => {
   const g1 = showreel.svg.selectAll(".symbol");
 
@@ -8,8 +9,11 @@ export const displayValueLabelsForPositionX = showreel => xPosition => {
     g.select("text.date-label tspan.tlegend-value")
       .text((d, i) => {
         const valuesForX = showreel.getValueForPositionXFromData(xPosition, d);
-        
-        dateToShow = d.isDate ? valuesForX.date : d.keys[valuesForX.date];
+        dateToShow = d.isDate ? valuesForX.estimatedDate : d.keys[valuesForX.date];
+
+        // Track current Date
+        showreel.currentDate = dateToShow;
+
         let response;
 
         if (isNaN(valuesForX.value))
@@ -24,7 +28,7 @@ export const displayValueLabelsForPositionX = showreel => xPosition => {
       g.select('text.date-label tspan.tspan-0')
         .text(function(d) {
           if (typeof dateToShow === 'undefined') return '';
-          return d.isDate ? showreel.format2(new Date(dateToShow)) : dateToShow
+          return d.isDate ? showreel.format3(new Date(dateToShow)) : dateToShow
         });
 
       g.select('text.date-label tspan.tspan-2')
@@ -63,3 +67,5 @@ export const displayValueLabelsForPositionX = showreel => xPosition => {
     }
   });
 };
+
+export default displayValueLabelsForPositionX;

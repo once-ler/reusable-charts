@@ -23,5 +23,6 @@ export {switchXAxis} from './switchXAxis';
 export {translateHelper} from './translateHelper';
 export {translateHelperLabels} from './translateHelperLabels';
 export {triggerWindowResize} from './triggerWindowResize';
+export {updateAbsoluteCoordinates} from './updateAbsoluteCoordinates';
 export {vanish} from './vanish';
 export {zerosPad} from './zerosPad';

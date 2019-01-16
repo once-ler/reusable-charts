@@ -29,6 +29,7 @@ import {
   translateHelper,
   translateHelperLabels,
   triggerWindowResize,
+  updateAbsoluteCoordinates,
   vanish,
   zerosPad
 } from './core';
@@ -64,6 +65,7 @@ const Showreel = {
   justKeys: [],
   firstLabel: true,
   monthsCovered: 24, // Total number of months in the date range, used to calculate ticks for xAxis
+  absoluteCoordinates: {}, // Keeps track of g node absolute positions when window resizes 
 
   // An axis generator, for the dark stroke.
   axis() { 
@@ -196,6 +198,10 @@ const Showreel = {
 
   triggerWindowResize() {
     return triggerWindowResize(this)()
+  },
+
+  updateAbsoluteCoordinates(targetWidth, targetHeight) {
+    return updateAbsoluteCoordinates(this)(targetWidth, targetHeight)
   },
 
   vanish() {

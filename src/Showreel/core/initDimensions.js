@@ -29,7 +29,8 @@ export const initDimensions = showreel => () => {
 
   const dateRange = {
     min: d3.min(showreel.data, d => d.values[0].date),
-    max: d3.max(showreel.data, d => d.values[d.values.length - 1].date) 
+    // max: d3.max(showreel.data, d => d.values[d.values.length - 1].date) 
+    max: new Date().getTime()
   }
 
   const c = moment(dateRange.max).diff(moment(dateRange.min), 'months')

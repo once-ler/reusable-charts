@@ -1,7 +1,7 @@
 export const crosshair = showreel => {
   return () => {
     d3.event.stopPropagation();
-    const mouse = d3.mouse(d3.event.target)
+    // const mouse = d3.mouse(d3.event.target)
 
     let x = d3.event.pageX
 
