@@ -8,6 +8,7 @@ export const updateAbsoluteCoordinates = showreel => (targetWidth, targetHeight)
     const box = g.node().getBoundingClientRect()    
     showreel.absoluteCoordinates[e.key] = box
   })
+
 }
 
 export default updateAbsoluteCoordinates;

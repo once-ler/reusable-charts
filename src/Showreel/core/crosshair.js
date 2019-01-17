@@ -3,7 +3,7 @@ export const crosshair = showreel => {
     d3.event.stopPropagation();
     // const mouse = d3.mouse(d3.event.target)
 
-    let x = d3.event.pageX
+    let x = d3.event.pageX - 7
 
     d3.select('#vertical').style('left', `${x}px`)
 

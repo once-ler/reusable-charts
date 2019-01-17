@@ -66,6 +66,7 @@ const Showreel = {
   firstLabel: true,
   monthsCovered: 24, // Total number of months in the date range, used to calculate ticks for xAxis
   absoluteCoordinates: {}, // Keeps track of g node absolute positions when window resizes 
+  gridWidthPercent: 0, // Current width percentage of the grid element relative to the width of the screen.
 
   // An axis generator, for the dark stroke.
   axis() { 

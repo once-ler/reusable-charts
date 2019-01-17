@@ -57,8 +57,16 @@
   fill: #666;
 }
 .container {
-  position: relative;
+  /*position: relative;*/
+  /*
+  
+  */
 }
+
+#grid {
+  
+}
+
 #vertical {
   position: absolute;
   top: 0px;

@@ -12,23 +12,24 @@ export const hoverHelper = showreel => () => {
     d3.event.stopPropagation();
 
     const y = d3.event.pageY
-    // TODO: Need this to be consistent with date label
-    const x = showreel.xAxis.invert(d3.event.pageX + showreel.margin.left + showreel.margin.right)
-    console.log(x)
-
-    let found
+    
+    let symbol
     
     _.every(showreel.absoluteCoordinates, (d, k) => {
       const top = d.top,
-        bottom = d.bottom + (showreel.margin.top)
+        bottom = d.bottom + (d.height/2)
 
       // console.log(k, top, bottom, y, d)
       const test = (y >= top && y <= bottom)
-      if (test) found = k
+      if (test) symbol = k
       return !test
     })
 
-    console.log(found)
+    console.log(symbol)
+
+    const x = d3.select('.date-label tspan.tspan-0').text()
+
+    console.log(x)
 
   })
 
