@@ -57,14 +57,7 @@
   fill: #666;
 }
 .container {
-  /*position: relative;*/
-  /*
-  
-  */
-}
-
-#grid {
-  
+  position: relative;
 }
 
 #vertical {
@@ -76,4 +69,43 @@
   width: 1px;
   height: 100%;
   pointer-events: none;
+}
+
+#pointer {
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  width: 15px;
+  height: 15px;
+  border: 2px solid crimson;
+  position: absolute;
+  pointer-events: none;
+  top: -500px;
+  border-radius: 50%;
+  transition: all .1s ease-in-out;
+}
+
+#pointer.rectangle {
+  border-radius:0;  
+  cursor: pointer;
+  width: 200px;
+  height: 300px;
+  background-color: #fff;
+}
+
+#close-btn {
+  visibility: hidden;
+  position: absolute;
+  top: 5px;
+  right: 5px; 
+  font-size: 30px;
+}
+
+#close-btn.show {
+  visibility: visible;
+}
+
+#close-btn:after{
+  display: inline-block;
+  content: "\00d7"; /* This will render the 'X' */
 }

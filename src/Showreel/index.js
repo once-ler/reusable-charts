@@ -13,7 +13,9 @@ import {
   displayValueLabelsForPositionX,
   drawBetterXAxis,
   getValueForPositionXFromData,
+  handleCloseButton,
   handleMouseOutGraph,
+  handleNodeClick,
   hoverHelper,
   initDimensions,
   line,
@@ -66,7 +68,7 @@ const Showreel = {
   firstLabel: true,
   monthsCovered: 24, // Total number of months in the date range, used to calculate ticks for xAxis
   absoluteCoordinates: {}, // Keeps track of g node absolute positions when window resizes 
-  gridWidthPercent: 0, // Current width percentage of the grid element relative to the width of the screen.
+  userClickedData: false, // Handle user click on data point.  If true, disable mousemove handling.
 
   // An axis generator, for the dark stroke.
   axis() { 
@@ -131,9 +133,17 @@ const Showreel = {
     return getValueForPositionXFromData(this)(xPosition, d)
   },
 
+  handleCloseButton() {
+    return handleCloseButton(this)
+  },
+
   // Returns the function that will handle the mouseout event callback.
   handleMouseOutGraph() {
     return handleMouseOutGraph(this)
+  },
+
+  handleNodeClick() {
+    return handleNodeClick(this)
   },
 
   hoverHelper() {

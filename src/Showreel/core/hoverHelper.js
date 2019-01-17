@@ -8,30 +8,13 @@ export const hoverHelper = showreel => () => {
   chart.on('mousemove', showreel.crosshair())
   chart.on('mouseout', showreel.handleMouseOutGraph())
 
-  chart.on('click', function(d,i){
-    d3.event.stopPropagation();
+  // Event handlers for when user clicks on close button.
+  const closeBtn = d3.select('#close-btn')
+  console.log(closeBtn)
+  closeBtn.on('click', null)
+  closeBtn.on('click', showreel.handleCloseButton())
 
-    const y = d3.event.pageY
-    
-    let symbol
-    
-    _.every(showreel.absoluteCoordinates, (d, k) => {
-      const top = d.top,
-        bottom = d.bottom + (d.height/2)
-
-      // console.log(k, top, bottom, y, d)
-      const test = (y >= top && y <= bottom)
-      if (test) symbol = k
-      return !test
-    })
-
-    console.log(symbol)
-
-    const x = d3.select('.date-label tspan.tspan-0').text()
-
-    console.log(x)
-
-  })
+  chart.on('click', showreel.handleNodeClick())
 
 /*
   const svg = d3.select('#' + showreel.chartElementName + ' svg')
@@ -52,7 +35,9 @@ export const hoverHelper = showreel => () => {
   })
 */
 
-
+  document.getElementById('close-btn').addEventListener('click', function() {
+    console.log('got it')
+  })
 
   showreel.createDateLabel();
 

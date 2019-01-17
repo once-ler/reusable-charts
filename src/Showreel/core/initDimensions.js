@@ -56,8 +56,6 @@ export const initDimensions = showreel => () => {
   // Compute the minimum and maximum date across symbols. (for axis)
   
   showreel.x.domain([dateRange.min, dateRange.max])
-
-  // console.log(dateRange.max)
   
   /*
   showreel.x.domain([
@@ -83,9 +81,9 @@ export const initDimensions = showreel => () => {
     .attr("class", "gmain")
     .attr("transform", "translate(" + showreel.margin.left + "," + showreel.margin.top + ")");
 
-  var text_node = showreel.svg.append("svg:text");
+  const text_node = showreel.svg.append("svg:text");
   
-  var extra = "";
+  let extra = "";
   if (showreel.data[0].actualCount > 50)
     extra = "Top 50 of " + showreel.data[0].actualCount + " ";
 
@@ -102,13 +100,19 @@ export const initDimensions = showreel => () => {
     .text('report')
     .attr("dx", "0.4em")
     .attr("dy", "0em");
+  
   //
-  var g = showreel.svg.selectAll("g")
+  const g = showreel.svg.selectAll("g")
     .data(showreel.data);
 
   g.enter()
     .append("g")
-    .attr("class", "symbol");
+    .attr("class", "symbol")
+      .append("svg:text")
+        .text(d => d.key)
+        .attr("class", "svgTitle2")
+        .attr('dy', -10)
+    
 
   g.exit()
     .remove(); //when we change the data source, the elements should auto update
