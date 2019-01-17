@@ -1,5 +1,4 @@
 /* @flow */
-
 export const hoverHelper = showreel => () => {
   const chart = d3.select('#' + showreel.chartElementName)
   chart.on('mousemove', null)
@@ -10,30 +9,10 @@ export const hoverHelper = showreel => () => {
 
   // Event handlers for when user clicks on close button.
   const closeBtn = d3.select('#close-btn')
-  console.log(closeBtn)
   closeBtn.on('click', null)
   closeBtn.on('click', showreel.handleCloseButton())
 
-  chart.on('click', showreel.handleNodeClick())
-
-/*
-  const svg = d3.select('#' + showreel.chartElementName + ' svg')
-  svg.on('click', function(d, i) {
-    console.log(d)
-    // d3.event.stopPropagation();
-    const mouse = d3.mouse(d3.event.target)
-    
-    const el = d3.select(this)
-
-    console.log(el)
-
-    // console.log(mouse)
-    const xValue = showreel.xAxis.invert(mouse[0]);
-    const yValue = showreel.yAxis;
-    
-    console.log(xValue, yValue.tickSize())
-  })
-*/
+  d3.selectAll('.symbol').on('click', showreel.handleNodeClick())
 
   document.getElementById('close-btn').addEventListener('click', function() {
     console.log('got it')

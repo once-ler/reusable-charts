@@ -69,7 +69,7 @@ const Showreel = {
   monthsCovered: 24, // Total number of months in the date range, used to calculate ticks for xAxis
   absoluteCoordinates: {}, // Keeps track of g node absolute positions when window resizes 
   userClickedData: false, // Handle user click on data point.  If true, disable mousemove handling.
-
+  
   // An axis generator, for the dark stroke.
   axis() { 
     return axis(this)()

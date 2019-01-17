@@ -15,18 +15,6 @@ export const initDimensions = showreel => () => {
     .ticks(4)
     .orient("right");
   
-  /*
-  const dateRange = _.reduce(showreel.data, (m, d) => {
-    if (m.min == 0 || d.minDate < m.min)
-      m.min = d.minDate
-
-    if (m.max == 0 || d.maxDate > m.max)
-      m.max = d.maxDate
-
-    return m;
-  }, {min: 0, max: 0});
-  */
-
   const dateRange = {
     min: d3.min(showreel.data, d => d.values[0].date),
     // max: d3.max(showreel.data, d => d.values[d.values.length - 1].date) 
@@ -38,36 +26,14 @@ export const initDimensions = showreel => () => {
 
   showreel.xAxis = d3.time.scale()
     .range([0, showreel.width - showreel.margin.right]); //used by mousemove
-/**  
-  showreel.xAxis.domain([
-    d3.min(showreel.data, function(d) {
-      return d.values[0].date;
-    }),
-    d3.max(showreel.data, function(d) {
-      return d.values[d.values.length - 1].date;
-    })
-  ]);
-**/
+
   showreel.xAxis.domain([dateRange.min, dateRange.max])
 
   showreel.x = d3.time.scale()
     .range([0, showreel.width - showreel.margin.right]);
   
-  // Compute the minimum and maximum date across symbols. (for axis)
-  
+  // Compute the minimum and maximum date across symbols. (for axis)  
   showreel.x.domain([dateRange.min, dateRange.max])
-  
-  /*
-  showreel.x.domain([
-    d3.min(showreel.data, function(d) {
-      return d.values[0].date;
-    }),
-    d3.max(showreel.data, function(d) {
-      return d.values[d.values.length - 1].date;
-    })
-  ]);
-  */
-
   showreel.svgWidth = showreel.width + showreel.margin.right + showreel.margin.left;
   showreel.svgHeight = showreel.height + showreel.margin.top + showreel.margin.bottom;
   
@@ -84,9 +50,11 @@ export const initDimensions = showreel => () => {
   const text_node = showreel.svg.append("svg:text");
   
   let extra = "";
+  /*
   if (showreel.data[0].actualCount > 50)
     extra = "Top 50 of " + showreel.data[0].actualCount + " ";
-
+  */
+ 
   text_node.append("tspan")
     .attr("class", "svgTitle")
     //.text(extra + app.pick.get('dimension'))
