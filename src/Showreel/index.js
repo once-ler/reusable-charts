@@ -30,7 +30,7 @@ import {
   switchXAxis,
   translateHelper,
   translateHelperLabels,
-  triggerWindowResize,
+  triggerEvent,
   updateAbsoluteCoordinates,
   vanish,
   zerosPad
@@ -207,8 +207,8 @@ const Showreel = {
     return translateHelperLabels(this)()
   },
 
-  triggerWindowResize() {
-    return triggerWindowResize(this)()
+  triggerEvent(eventName) {
+    return triggerEvent(this)(eventName)
   },
 
   updateAbsoluteCoordinates(targetWidth, targetHeight) {

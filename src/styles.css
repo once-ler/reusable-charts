@@ -82,32 +82,20 @@
   height: 5px;
   border: 2px solid crimson;
   position: absolute;
-  top: -500px;
+  top: 0px;
+  left: 0px;
   border-radius: 50%;
   opacity: 0.6;
-  -webkit-transition: border-radius .2s ease-in-out;
-    -moz-transition: border-radius .2s ease-in-out;
-      -ms-transition: border-radius .2s ease-in-out;
-          transition: border-radius .2s ease-in-out;
-          /*
-          -webkit-transition: height .2s ease-in-out;
-          -moz-transition: height .2s ease-in-out;
-            -ms-transition: height .2s ease-in-out;
-                transition: height .2s ease-in-out;
-                */
-                /*
-                -webkit-transition: width .2s ease-in-out;
-          -moz-transition: width .2s ease-in-out;
-            -ms-transition: width .2s ease-in-out;
-                transition: width .2s ease-in-out;
-                */
-  /*transition: border-radius .2s ease-in-out;*/
+  -webkit-transition: border-radius .3s ease-in-out;
+    -moz-transition: border-radius .3s ease-in-out;
+      -ms-transition: border-radius .3s ease-in-out;
+          transition: border-radius .3s ease-in-out;
 }
 
 #pointer.rectangle {
   border-radius: 0;  
   cursor: pointer;
-  width: 200px;
+  width: 400px;
   height: 300px;
   background-color: #fff;
   opacity: 1;

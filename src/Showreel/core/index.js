@@ -24,7 +24,7 @@ export {summarize} from './summarize';
 export {switchXAxis} from './switchXAxis';
 export {translateHelper} from './translateHelper';
 export {translateHelperLabels} from './translateHelperLabels';
-export {triggerWindowResize} from './triggerWindowResize';
+export {triggerEvent} from './triggerEvent';
 export {updateAbsoluteCoordinates} from './updateAbsoluteCoordinates';
 export {vanish} from './vanish';
 export {zerosPad} from './zerosPad';

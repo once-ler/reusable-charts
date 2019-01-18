@@ -5,7 +5,7 @@ export const initDimensions = showreel => () => {
   showreel.width = showreel.width - showreel.margin.right - showreel.margin.left;
   showreel.originalWidth = showreel.width;
   showreel.gHeight = showreel.data.length == 1 ? 180 : (showreel.data.length == 2 ? 105 : 65);
-  showreel.height = (showreel.gHeight * showreel.data.length) + (2 * (showreel.margin.top + showreel.margin.bottom));
+  showreel.height = (showreel.gHeight * showreel.data.length) + (1 * (showreel.margin.top + showreel.margin.bottom));
 
   showreel.y = d3.scale.linear()
     .range([showreel.gHeight, 0]);
@@ -76,11 +76,10 @@ export const initDimensions = showreel => () => {
   g.enter()
     .append("g")
     .attr("class", "symbol")
-      .append("svg:text")
+    .append("svg:text")
         .text(d => d.key)
         .attr("class", "svgTitle2")
         .attr('dy', -10)
-    
 
   g.exit()
     .remove(); //when we change the data source, the elements should auto update

@@ -18,7 +18,7 @@ export const translateHelper = showreel => n => {
         d3.select(this)
           .transition()
           .duration(showreel.duration / 2)
-          .attr("transform", "translate(0," + ((i * showreel.gHeight) + (i * 30)) + ")");
+          .attr("transform", "translate(0," + ((i * showreel.gHeight) + (i * 40)) + ")");
       });
     }
   }
