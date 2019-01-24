@@ -163,9 +163,7 @@ select::-ms-expand {
   font-size: 64px;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
+.main-container {
   font-family: Helvetica, Arial, sans-serif;
   font-size: '1em';
   background-color: 'papayawhip';
@@ -178,6 +176,15 @@ select::-ms-expand {
 .nav {
   background: transparent;
   display: flex;
+}
+
+.logo {
+  min-width: 120px;
+  min-height: 60px;
+  background-color: transparent;
+  margin: 10px;
+  margin-right: auto;
+  order: -1000;
 }
 
 .nav-list-container {
@@ -229,4 +236,12 @@ select::-ms-expand {
   .nav {
     visibility: hidden;;
   }
+
+  .logo {
+    flex: 1 100%;
+    max-width: 80%;
+    align-self: flex-start;
+    order: 0;
+  }
+  
 }

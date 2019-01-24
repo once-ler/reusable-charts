@@ -1,8 +1,8 @@
 /* @flow */
 
-export const handleMenuClick = showreel => () => {
+export const handleMenuClick = showreel => function() {
   d3.event.stopPropagation();
-  const el = d3.event.target
-  console.log(d3.select(el))
+  
+  console.log(d3.select(this))
 
 }

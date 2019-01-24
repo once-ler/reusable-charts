@@ -26,6 +26,7 @@ export const config = showreel => (options) => {
     showreel.initDimensions();
     showreel.drawBetterXAxis();
     showreel.hoverHelper();
+    showreel.createNavCells();
 
     setTimeout(() => {
       showreel.resizeOnce = true;

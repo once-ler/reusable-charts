@@ -4,6 +4,10 @@ import {
 } from './draw'
 
 import {
+  createNavCells
+} from './nav'
+
+import {
   area,
   axis,
   config,
@@ -87,6 +91,10 @@ const Showreel = {
 
   createDateLabel() {
     return createDateLabel(this)()
+  },
+
+  createNavCells() {
+    return createNavCells(this)()
   },
 
   // Returns the function that will handle the mousemove event callback.

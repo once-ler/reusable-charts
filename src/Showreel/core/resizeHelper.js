@@ -17,7 +17,7 @@ export const resizeHelper = showreel => () => {
 
     const targetWidth = boxParent.width - pad;
     const targetHeight = Math.round(targetWidth / aspect) + pad;
-    
+  
     sel.attr("width", targetWidth);
     sel.attr("height", targetHeight);
 
