@@ -10,6 +10,10 @@ const config = {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|ttf|eot|woff2?)$/i,
+        loader: 'url-loader'
       }
     ]
   },

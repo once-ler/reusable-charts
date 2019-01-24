@@ -1,6 +1,7 @@
 /* @flow */
 import './styles.css';
 import 'dc/dc.css';
+import 'ionicons/dist/css/ionicons.min.css'
 
 export {
   chart$Reduce as Reduce,
