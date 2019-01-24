@@ -6,19 +6,32 @@
 	<title>reusable-charts</title>  
   </head>
   <body>
-    <div id="root"></div>
-    <div id="chart"></div>
-    <div id="vertical"></div>
-    <div id="pointer"><div id="close-btn"></div></div>
-    
-    <nav>
-    <div class="size-32 item rectangle" onclick="alert('hello')">
-      <i class="ion-md-analytics lightcoral-color"></i>
-    </div>
-    </nav>
+    <div class="container">
+      <div class="nav">
+        <div class="nav-list-container">
+            <ul class="nav-list">
+              <li id="menu-0" name="switch-chart" class="item size-24">
+                <span class="menu-item size-24">
+                  <i class="ion-md-analytics lightcoral-color"></i>
+                </span>
+              </li>
+              <li id="menu-1" name="from-months" class="item size-24">
+                <span class="menu-item size-24">
+                  <i class="ion-ios-keypad lightcoral-color"></i>
+                </span>
+              </li>
+            </ul>
+        </div>
+      </div>
 
-    <div class="container">      
-      <div id="chart1"></div>   
-    </div>    
+      <div id="root"></div>
+      <div id="chart"></div>
+      <div id="vertical"></div>
+      <div id="pointer"><div id="close-btn"></div></div>
+      <div class="container">      
+        <div id="chart1"></div>   
+      </div>
+
+    </div>
   </body>
 </html>

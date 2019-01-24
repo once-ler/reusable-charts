@@ -14,6 +14,7 @@ import {
   drawBetterXAxis,
   getValueForPositionXFromData,
   handleCloseButton,
+  handleMenuClick,
   handleMouseOutGraph,
   handleNodeClick,
   hoverHelper,
@@ -135,6 +136,10 @@ const Showreel = {
 
   handleCloseButton() {
     return handleCloseButton(this)
+  },
+
+  handleMenuClick() {
+    return handleMenuClick(this)
   },
 
   // Returns the function that will handle the mouseout event callback.

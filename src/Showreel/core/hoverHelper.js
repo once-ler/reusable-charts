@@ -14,9 +14,7 @@ export const hoverHelper = showreel => () => {
 
   d3.selectAll('.symbol').on('click', showreel.handleNodeClick())
 
-  document.getElementById('close-btn').addEventListener('click', function() {
-    console.log('got it')
-  })
+  d3.selectAll('.menu-item').on('click', showreel.handleMenuClick())
 
   showreel.createDateLabel();
 

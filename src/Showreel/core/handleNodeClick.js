@@ -17,7 +17,7 @@ export const handleNodeClick = showreel => (d, i) => {
   d3.select('#close-btn').classed('show', true);
 
   // Make sure the display is visible
-  console.log(d3.event.pageX, d3.event.pageY, showreel.absoluteCoordinates.ROOT.width)
+  // console.log(d3.event.pageX, d3.event.pageY, showreel.absoluteCoordinates.ROOT.width)
   if ((d3.event.pageX + 500) > showreel.absoluteCoordinates.ROOT.width) {
     let left = `${showreel.absoluteCoordinates.ROOT.width - 500}px`,
       width = '400px'

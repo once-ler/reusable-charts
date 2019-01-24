@@ -49,27 +49,21 @@ export const initDimensions = showreel => () => {
 
   const text_node = showreel.svg.append("svg:text");
   
-  let extra = "";
   /*
-  if (showreel.data[0].actualCount > 50)
-    extra = "Top 50 of " + showreel.data[0].actualCount + " ";
-  */
- 
+  let extra = "";
   text_node.append("tspan")
     .attr("class", "svgTitle")
-    //.text(extra + app.pick.get('dimension'))
     .text(extra + 'dimension')
     .attr("x", showreel.margin.left / 3)
     .attr("y", "-1.3em");
 
   text_node.append("tspan")
     .attr("class", "svgTitle2")
-    // .text(app.pick.get('report'))
     .text('report')
     .attr("dx", "0.4em")
     .attr("dy", "0em");
-  
-  //
+  */
+
   const g = showreel.svg.selectAll("g")
     .data(showreel.data);
 
