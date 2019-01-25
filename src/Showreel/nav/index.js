@@ -6,6 +6,7 @@ export const createNavCells = showreel => () => {
     {
       id: '0', 
       icon: 'ion-md-analytics', 
+      /*
       onClick: function(d, i) {
         // console.log(d3.event.target)
         // console.log(d.classed('rectangle'))
@@ -18,6 +19,7 @@ export const createNavCells = showreel => () => {
         const content =d.select('.content') 
         content.classed('not-visible', !content.classed('not-visible'))
       },
+      */
       content: function(showreel) {
         return `
           <select id="select-chart-type" class="select-css">
@@ -29,7 +31,7 @@ export const createNavCells = showreel => () => {
       callback: function(showreel) {
         d3.select('#select-chart-type').on('change', function(){
           const val = d3.select(this).property('value')
-
+console.log(val)
           switch (val) {
             case 'horizons':
               showreel.drawHorizons()
@@ -44,19 +46,56 @@ export const createNavCells = showreel => () => {
         })
       }
     }, 
-    {id: '1', icon: 'ion-ios-keypad'}
+    {
+      id: '1', 
+      icon: 'ion-ios-keypad',
+      content: function(showreel) {
+        return `
+        <form>
+          <div class="form-cell">
+          <input type="text" id="months-elapsed" name="months-elapsed" size="40" pattern="[0-9]{1,3}" placeholder="Months elapsed">
+          </div>
+        </form>
+        `
+      },
+      callback: function(showreel) {
+        d3.select('#months-elapsed').on('change', function(){
+          const val = d3.select(this).property('value')
+console.log(val)
+
+          
+        })
+      }
+    }
   ]
 
   const li = d3.select('#nav-list').selectAll('li').data(navs)
   
   li.enter().append('li').attr('class', 'item')
-    .on('click', function(d, i) {
+    .on('click', function(d1, i) {
         d3.event.stopPropagation()
+        
+        console.log(d3.event.target.nodeName)
+        
+        if (~d3.event.target.nodeName.search(/(input|div)/i))
+          return
 
+        /*
         if (d.onClick)
           return d.onClick(d3.select(this), i)
         
         console.log('No callback for ' + d.id)
+        */
+        
+        const d = d3.select(this)
+        
+        d.classed('rectangle', !d.classed('rectangle'))
+        d.selectAll('span i').each(function(d, i){
+          const ico = d3.select(this)
+          ico.classed('not-visible', !ico.classed('not-visible'))
+        })
+        const content =d.select('.content') 
+        content.classed('not-visible', !content.classed('not-visible'))
       }
     )
     .each(function(d, i) {
