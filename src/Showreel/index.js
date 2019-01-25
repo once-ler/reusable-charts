@@ -229,7 +229,7 @@ const Showreel = {
   },
 
   vanish() {
-    return vanish(this)
+    return vanish(this)()
   },
 
   zerosPad(rndVal, decPlaces) {

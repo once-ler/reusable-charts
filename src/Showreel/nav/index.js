@@ -7,6 +7,7 @@ export const createNavCells = showreel => () => {
       id: '0', 
       icon: 'ion-md-analytics', 
       onClick: function(d, i) {
+        // console.log(d3.event.target)
         // console.log(d.classed('rectangle'))
         // console.log(d.data())
         d.classed('rectangle', !d.classed('rectangle'))
@@ -19,11 +20,28 @@ export const createNavCells = showreel => () => {
       },
       content: function(showreel) {
         return `
-          <select class="select-css">
+          <select id="select-chart-type" class="select-css">
             <option value="lines">Lines</option>
             <option value="horizons">Horizons</option>
           </select>
         `
+      },
+      callback: function(showreel) {
+        d3.select('#select-chart-type').on('change', function(){
+          const val = d3.select(this).property('value')
+
+          switch (val) {
+            case 'horizons':
+              showreel.drawHorizons()
+              break
+            case 'lines':
+              showreel.drawLines()
+              break  
+            default:
+              break
+          }
+          
+        })
       }
     }, 
     {id: '1', icon: 'ion-ios-keypad'}
@@ -55,6 +73,10 @@ export const createNavCells = showreel => () => {
           const html = d.content(showreel)
           item.append('div')
             .html(`<div class="content not-visible">${html}</div>`)          
+        }
+
+        if (d.callback) {
+          d.callback(showreel)
         }
             
     })
