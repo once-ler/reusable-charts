@@ -6,20 +6,6 @@ export const createNavCells = showreel => () => {
     {
       id: '0', 
       icon: 'ion-md-analytics', 
-      /*
-      onClick: function(d, i) {
-        // console.log(d3.event.target)
-        // console.log(d.classed('rectangle'))
-        // console.log(d.data())
-        d.classed('rectangle', !d.classed('rectangle'))
-        d.selectAll('span i').each(function(d, i){
-          const ico = d3.select(this)
-          ico.classed('not-visible', !ico.classed('not-visible'))
-        })
-        const content =d.select('.content') 
-        content.classed('not-visible', !content.classed('not-visible'))
-      },
-      */
       content: function(showreel) {
         return `
           <select id="select-chart-type" class="select-css">
@@ -31,7 +17,7 @@ export const createNavCells = showreel => () => {
       callback: function(showreel) {
         d3.select('#select-chart-type').on('change', function(){
           const val = d3.select(this).property('value')
-console.log(val)
+
           switch (val) {
             case 'horizons':
               showreel.drawHorizons()
@@ -51,7 +37,7 @@ console.log(val)
       icon: 'ion-ios-keypad',
       content: function(showreel) {
         return `
-        <form>
+        <form id="months-elapsed-form">
           <div class="form-cell">
           <input type="text" id="months-elapsed" name="months-elapsed" size="40" pattern="[0-9]{1,3}" placeholder="Months elapsed">
           </div>
@@ -59,10 +45,17 @@ console.log(val)
         `
       },
       callback: function(showreel) {
+        d3.select("#months-elapsed-form").on('submit', function() {
+          d3.event.preventDefault()
+        })
+
         d3.select('#months-elapsed').on('change', function(){
           const val = d3.select(this).property('value')
-console.log(val)
-
+       
+          const data = showreel.data.slice(2,4)
+          showreel.updateData(data)
+          console.log('a')
+          showreel.drawLines()          
           
         })
       }
@@ -75,17 +68,9 @@ console.log(val)
     .on('click', function(d1, i) {
         d3.event.stopPropagation()
         
-        console.log(d3.event.target.nodeName)
-        
+        // console.log(d3.event.target.nodeName)
         if (~d3.event.target.nodeName.search(/(input|div)/i))
           return
-
-        /*
-        if (d.onClick)
-          return d.onClick(d3.select(this), i)
-        
-        console.log('No callback for ' + d.id)
-        */
         
         const d = d3.select(this)
         

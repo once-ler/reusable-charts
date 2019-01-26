@@ -37,6 +37,8 @@ import {
   translateHelperLabels,
   triggerEvent,
   updateAbsoluteCoordinates,
+  updateData,
+  updateXDomain,
   vanish,
   zerosPad
 } from './core';
@@ -226,6 +228,14 @@ const Showreel = {
 
   updateAbsoluteCoordinates(targetWidth, targetHeight) {
     return updateAbsoluteCoordinates(this)(targetWidth, targetHeight)
+  },
+
+  updateData(data) {
+    return updateData(this)(data)
+  },
+
+  updateXDomain() {
+    return updateXDomain(this)()
   },
 
   vanish() {

@@ -12,7 +12,11 @@ export {handleMenuClick} from './handleMenuClick';
 export {handleMouseOutGraph} from './handleMouseOutGraph';
 export {handleNodeClick} from './handleNodeClick';
 export {hoverHelper} from './hoverHelper';
-export {initDimensions} from './initDimensions';
+export {
+  initDimensions,
+  updateData,
+  updateXDomain
+} from './initDimensions';
 export {line} from './line';
 export {moveXAxisLabels} from './moveXAxisLabels';
 export {perRound} from './perRound';

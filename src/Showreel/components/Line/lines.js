@@ -29,21 +29,24 @@ export const lines = showreel => () => {
   g.each(function(d) {
     showreel.y.domain([0, d.maxPrice]);
 
-    d3.select(this)
+    const l = d3.select(this)
       .selectAll(".rl.line")
       .data(d3.range(1))
-      .enter()
+
+      l.enter()
       .append("path", ".line")
       .attr("class", "rl line")
       .attr("transform", d => `translate(0,${d * showreel.gHeight})`)
       .attr("d", e => showreel.line(_.map(d.values, f => ({
-      date: f.date,
-      price: 0
-    }))))
+        date: f.date,
+        price: 0
+      }))))
       .style("fill", "none")
       .style("stroke-width", "1.5px")
       .style("stroke", showreel.darkerColor(d.key))
       .style("stroke-opacity", 1);
+
+    l.exit().remove()
 
     d3.select(this)
       .selectAll(".rl.line")
