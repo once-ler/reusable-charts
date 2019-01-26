@@ -8,7 +8,6 @@ export {drawBetterXAxis} from './drawBetterXAxis';
 export {displayValueLabelsForPositionX} from './displayValueLabelsForPositionX';
 export {getValueForPositionXFromData} from './getValueForPositionXFromData';
 export {handleCloseButton} from './handleCloseButton';
-export {handleMenuClick} from './handleMenuClick';
 export {handleMouseOutGraph} from './handleMouseOutGraph';
 export {handleNodeClick} from './handleNodeClick';
 export {hoverHelper} from './hoverHelper';

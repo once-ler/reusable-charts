@@ -53,13 +53,12 @@ export const displayValueLabelsForPositionX = showreel => xPosition => {
     try {
       g.select('text.date-label tspan.tspan-1')
         .text(function(d, i) {
-          const form = {};
+          const form = {key: d.key};
           form.orignum = showreel.currentUserPositionX[showreel.justKeys[ei == 0 ? 1 : 0]].price;
           form.secnum = showreel.currentUserPositionX[d.key].price;
-          
           const val = showreel.solve(form);
 
-          return `${val.direction + showreel.perRound(val.percentchange)}%`;
+          return `${(val.direction || '') + showreel.perRound(val.percentchange)}%`;
         });
 
     } catch (err) {
