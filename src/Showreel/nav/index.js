@@ -14,8 +14,8 @@ export const createNavCells = showreel => () => {
           </select>
         `
       },
-      callback: function(showreel) {
-        d3.select('#select-chart-type').on('change', function(){
+      callback: function(showreel, close) {
+        d3.select('#select-chart-type').on('change', function() {
           const val = d3.select(this).property('value')
 
           switch (val) {
@@ -28,6 +28,8 @@ export const createNavCells = showreel => () => {
             default:
               break
           }
+
+          close()
           
         })
       }
@@ -44,9 +46,10 @@ export const createNavCells = showreel => () => {
         </form>
         `
       },
-      callback: function(showreel) {
+      callback: function(showreel, close) {
         d3.select("#months-elapsed-form").on('submit', function() {
           d3.event.preventDefault()
+          close()
         })
 
         d3.select('#months-elapsed').on('change', function(){
@@ -54,7 +57,7 @@ export const createNavCells = showreel => () => {
        
           const data = showreel.data.slice(2,4)
           showreel.updateData(data)
-          console.log('a')
+          
           showreel.drawLines()          
           
         })
@@ -69,7 +72,7 @@ export const createNavCells = showreel => () => {
         d3.event.stopPropagation()
         
         // console.log(d3.event.target.nodeName)
-        if (~d3.event.target.nodeName.search(/(input|div)/i))
+        if (~d3.event.target.nodeName.search(/(input|select|div)/i))
           return
         
         const d = d3.select(this)
@@ -95,12 +98,13 @@ export const createNavCells = showreel => () => {
 
         if (d.content) {
           const html = d.content(showreel)
-          item.append('div')
-            .html(`<div class="content not-visible">${html}</div>`)          
+          item.append('div').attr('class', 'content not-visible')
+            .html(html)          
         }
 
+        const close = () => item.node().click()
         if (d.callback) {
-          d.callback(showreel)
+          d.callback(showreel, close)
         }
             
     })
