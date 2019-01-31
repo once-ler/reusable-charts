@@ -45,6 +45,7 @@ import {
 const Showreel = {
   chartElementName: 'chart',
   data: [],
+  cached: [], // Copy of initial data.  Do not mutate.  Used for updating showreel.data when slicing.
   margin: {
     left: 5,
     right: 5

@@ -55,8 +55,27 @@ export const createNavCells = showreel => () => {
         d3.select('#months-elapsed').on('change', function(){
           const val = d3.select(this).property('value')
        
-          const data = showreel.data.slice(2,4)
-          showreel.updateData(data)
+          const fromDate = moment().subtract(val < 2 ? 2 : val, 'months').toDate()
+          
+          const data = showreel.cached.slice()
+
+          const m = data.map((d, i) => {
+            const v = d.values.filter(a => a.date > fromDate)
+            
+            return {
+              key: d.key,
+              values: v,
+              actualCount: v.length,
+              isDate: true,
+              keys: [],
+              maxPrice: d3.max(v, function (d) { return d.price; }),
+              sumPrice: d3.sum(v, function (d) { return d.price; }),
+              maxDate: d3.max(v, function (d) { return d.date; }),
+              minDate: d3.min(v, function (d) { return d.date; })
+            }
+          })
+
+          showreel.updateData(m)
           
           showreel.drawLines()          
           
@@ -82,8 +101,14 @@ export const createNavCells = showreel => () => {
           const ico = d3.select(this)
           ico.classed('not-visible', !ico.classed('not-visible'))
         })
-        const content =d.select('.content') 
+        const content = d.select('.content') 
         content.classed('not-visible', !content.classed('not-visible'))
+
+        if (!content.classed('not-visible')) {
+          const input = content.select('input').node()
+          if (input)
+            input.focus()
+        }
       }
     )
     .each(function(d, i) {
@@ -105,8 +130,7 @@ export const createNavCells = showreel => () => {
         const close = () => item.node().click()
         if (d.callback) {
           d.callback(showreel, close)
-        }
-            
+        }            
     })
 
   li.exit().remove()

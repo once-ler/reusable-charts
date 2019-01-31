@@ -7,6 +7,9 @@ export const config = showreel => (options) => {
     showreel[k] = options[k];
   }
 
+  // Cached the data so user can slice and dice.
+  showreel.cached = showreel.data.slice()
+
   options.data &&
     (showreel.justKeys = _.map(showreel.data, d => d.key));
 
