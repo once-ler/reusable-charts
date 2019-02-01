@@ -10,17 +10,22 @@ export const handleNodeClick = showreel => (d, i) => {
 
   const symbol = d.key
   const x = d3.select('.date-label tspan.tspan-0').text()
-
+  
   // Transform pointer to rectangle
-  d3.select('#pointer').style('width', '400px').style('height', '300px')
+  d3.select('#pointer').style('width', '500px').style('height', '300px')
   d3.select('#pointer').classed('rectangle', true)
   d3.select('#close-btn').classed('show', true);
+  // Show grid
+  d3.select('#clusterize-grid').classed('not-visible', false)
+  // Fetch data
+  // If there are no value, return immediately.
+  showreel.testGetReddit()
 
   // Make sure the display is visible
   // console.log(d3.event.pageX, d3.event.pageY, showreel.absoluteCoordinates.ROOT.width)
   if ((d3.event.pageX + 500) > showreel.absoluteCoordinates.ROOT.width) {
-    let left = `${showreel.absoluteCoordinates.ROOT.width - 500}px`,
-      width = '400px'
+    let left = `${showreel.absoluteCoordinates.ROOT.width - 460 - ((showreel.margin.right + showreel.margin.left) / 2)}px`,
+      width = '500px'
     if (showreel.absoluteCoordinates.ROOT.width < 500) {
       width = `${showreel.absoluteCoordinates.ROOT.width - 10}px`
       left = '10px'
@@ -29,7 +34,7 @@ export const handleNodeClick = showreel => (d, i) => {
   }
 
   if ((d3.event.pageY + 500) > showreel.absoluteCoordinates.ROOT.height) {
-    let top = `${showreel.absoluteCoordinates.ROOT.height - 500 - showreel.margin.bottom - showreel.margin.top}px`,
+    let top = `${showreel.absoluteCoordinates.ROOT.height - 460 - showreel.margin.bottom - showreel.margin.top}px`,
       height = '300px'
     if (showreel.absoluteCoordinates.ROOT.height < 500) {
       height = `${showreel.absoluteCoordinates.ROOT.height - 10}px`

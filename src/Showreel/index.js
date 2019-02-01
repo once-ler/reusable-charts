@@ -8,6 +8,14 @@ import {
 } from './nav'
 
 import {
+  createGrid
+} from './grid'
+
+import {
+  getReddit
+} from './grid/__test__/getReddit'
+
+import {
   area,
   axis,
   config,
@@ -93,6 +101,10 @@ const Showreel = {
 
   createDateLabel() {
     return createDateLabel(this)()
+  },
+
+  createGrid() {
+    return createGrid(this)()
   },
 
   createNavCells() {
@@ -208,6 +220,10 @@ const Showreel = {
 
   switchXAxis() {
     return switchXAxis(this)()
+  },
+
+  testGetReddit() {
+    return getReddit(this)('dinosuars')
   },
 
   translateHelper(n) {

@@ -2,6 +2,7 @@
 import './styles.css';
 import 'dc/dc.css';
 import 'ionicons/dist/css/ionicons.min.css'
+import 'clusterize.js/clusterize.css'
 
 export {
   chart$Reduce as Reduce,

@@ -76,7 +76,9 @@
 
 #pointer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   z-index: 4;
   width: 5px;
   height: 5px;
@@ -95,11 +97,16 @@
 #pointer.rectangle {
   z-index: 8;
   border-radius: 0;  
-  cursor: pointer;
-  width: 400px;
+  /*width: 400px;*/
   height: 300px;
   background-color: #fff;
   opacity: 1;
+}
+
+@media only screen and (min-width: 500px) {
+  #pointer.rectangle {
+    width: 700px;
+  }  
 }
 
 #close-btn {
@@ -108,6 +115,7 @@
   top: 5px;
   right: 5px; 
   font-size: 30px;
+  cursor: pointer;
 }
 
 #close-btn.show {
@@ -338,3 +346,32 @@ input {
     */
   }  
 }
+
+/** Clusterize **/
+.clusterize { 
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  border-bottom: 1px solid #777;
+  cursor: text;
+}
+.clusterize table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  font-size: 11px;
+}
+
+.clusterize tr:hover td {
+  background-color: #FFFFCC;
+}
+.clusterize tr:hover td pre {
+  background-color: yellow;
+}
+.clusterize pre { font-family: "Lucida Console", Monaco, monospace; font-size: 11px; }
+.clusterize th, td { padding: 5px 8px; }  
+.clusterize th {background-color: #f08080;color:White;height:1.3em;} 
+.clusterize td {border-right: 1px solid #ccc;}    
+.clusterize tr:nth-child(even) {background: #f8f3f3;}
+.clusterize tr:nth-child(odd) {background: #ffffff;}
+.clusterize tr {vertical-align:top;}

@@ -9,7 +9,8 @@ export const handleCloseButton = showreel => () => {
   setTimeout(() => pointer.style('width', '5px').style('height', '5px'), 200)
   
   d3.select('#close-btn').classed('show', false)
-    
+
+  d3.select('#clusterize-grid').classed('not-visible', true)
 
   showreel.userClickedData = false
 }

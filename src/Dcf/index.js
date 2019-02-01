@@ -4,6 +4,7 @@ global.dc = require('dc');
 global.d3 = require('d3');
 global.colorbrewer2 = require('colorbrewer');
 global.moment = require('moment');
+global.Clusterize = require('clusterize.js');
 
 import d3dc from './d3dc';
 

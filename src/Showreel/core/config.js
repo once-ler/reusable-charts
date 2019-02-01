@@ -30,6 +30,7 @@ export const config = showreel => (options) => {
     showreel.drawBetterXAxis();
     showreel.hoverHelper();
     showreel.createNavCells();
+    showreel.createGrid();
 
     setTimeout(() => {
       showreel.resizeOnce = true;
