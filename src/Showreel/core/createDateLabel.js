@@ -3,6 +3,21 @@ export const createDateLabel = showreel => () => {
   // placeholder just so we can calculate a valid width
   // create the date label to the left of the scaleButtons group
   const g = showreel.svg.selectAll(".symbol");
+
+  // Add title
+
+  // Slide the title down b/c clip-path will refuse to allow visibility outside its boundaries.
+  const title_dy = showreel.currentChart === 'horizons' ? 35 : -10
+  
+  g.append('svg:g')
+  .attr('class', 'date-label-group')
+  .append('g')
+  .append("svg:text")
+    .text(d => d.key)
+    .attr("class", "svgTitle2")
+    .attr('dy', title_dy)
+    .attr('dx', 5)
+  
   const buttonGroup = g.append("svg:g")
     .attr("class", "date-label-group");
   const text_node = buttonGroup.append("svg:text")

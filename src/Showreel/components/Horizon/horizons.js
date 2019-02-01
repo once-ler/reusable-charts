@@ -13,12 +13,15 @@ export const horizons = showreel => () => {
   //reset
   showreel.x = d3.time.scale()
     .range([0, showreel.width - showreel.margin.right]);
+
   showreel.y = d3.scale.linear()
     .range([showreel.gHeight, 0]);
+
   showreel.x.domain([
     d3.min(showreel.data, d => d.values[0].date),
     d3.max(showreel.data, d => d.values[d.values.length - 1].date)
   ]);
+
   showreel.line = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) {

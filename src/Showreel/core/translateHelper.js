@@ -4,7 +4,7 @@ export const translateHelper = showreel => n => {
   if (n == "bars" || n == "lines" || n == "horizons" || n == "areas") {
     return () => {
 
-      var t = showreel.svg.selectAll(".symbol")
+      const t = showreel.svg.selectAll(".symbol")
         .transition()
         .duration(showreel.duration / 2);
 
@@ -24,7 +24,7 @@ export const translateHelper = showreel => n => {
   }
 
   return () => {
-    var t = showreel.svg.selectAll(".symbol")
+    const t = showreel.svg.selectAll(".symbol")
       .transition()
       .duration(showreel.duration / 2);
     

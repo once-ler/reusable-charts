@@ -1,6 +1,7 @@
 import { lines } from '../components'
 
 export const drawLines = showreel => () => {
+  showreel.currentChart = 'lines'
   showreel.vanish();
   showreel.switchXAxis(0, 1);
   showreel.translateHelper("lines")();

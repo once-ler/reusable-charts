@@ -6,11 +6,24 @@ export const handleNodeClick = showreel => (d, i) => {
   // When the user has already clicked on a node, we must wait for the user to close the popup.
   if (showreel.userClickedData) return; 
 
-  showreel.userClickedData = true
-
   const symbol = d.key
   const x = d3.select('.date-label tspan.tspan-0').text()
   
+  let dtClicked
+    
+  if (d.isDate) {
+    try {
+      dtClicked = new Date(x)
+      if (dtClicked < d.minDate || dtClicked > moment(d.maxDate).add(1, 'months'))
+        return
+    } catch (e) {
+      return;
+    }
+  }
+
+  // Can now proceed.
+  showreel.userClickedData = true
+
   // Transform pointer to rectangle
   d3.select('#pointer').style('width', '500px').style('height', '300px')
   d3.select('#pointer').classed('rectangle', true)
@@ -18,7 +31,9 @@ export const handleNodeClick = showreel => (d, i) => {
   // Show grid
   d3.select('#clusterize-grid').classed('not-visible', false)
   // Fetch data
-  // If there are no value, return immediately.
+  
+  console.log(dtClicked)
+
   showreel.testGetReddit()
 
   // Make sure the display is visible

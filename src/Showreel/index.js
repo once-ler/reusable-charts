@@ -75,7 +75,7 @@ const Showreel = {
   svgheight: 0,
   resizeOnce: false,
   rulesCreated: false,
-  currentChart: 'bars',
+  currentChart: 'lines',
   userCurrentlyInteracting: false,
   currentUserPositionX: {},
   legendFontSize: 12,

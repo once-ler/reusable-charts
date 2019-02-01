@@ -18,11 +18,13 @@ export const resizeHelper = showreel => () => {
     const targetWidth = boxParent.width - pad;
     const targetHeight = Math.round(targetWidth / aspect) + pad;
   
-    sel.attr("width", targetWidth);
-    sel.attr("height", targetHeight);
+    if (!isNaN(targetWidth) && !isNaN(targetHeight)) {
+      sel.attr("width", targetWidth);
+      sel.attr("height", targetHeight);
 
-    // Keep track of all resized g elements
-    showreel.updateAbsoluteCoordinates(targetWidth, targetHeight);
+      // Keep track of all resized g elements
+      showreel.updateAbsoluteCoordinates(targetWidth, targetHeight);
+    }
 
     // Place the crosshair on the farthest left.
     d3.select('#vertical').style('left', '0px')

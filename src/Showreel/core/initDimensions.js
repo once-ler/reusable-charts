@@ -12,11 +12,7 @@ export const updateData = showreel => data => {
   g.enter()
     .append("g")
     .attr("class", "symbol")
-    .append("svg:text")
-        .text(d => d.key)
-        .attr("class", "svgTitle2")
-        .attr('dy', -10)
-
+    
   g.exit()
     .remove(); //when we change the data source, the elements should auto update
 }

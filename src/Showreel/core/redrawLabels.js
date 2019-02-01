@@ -11,7 +11,7 @@ export const redrawLabels = showreel => () => {
       if (showreel.currentChart == "horizons") {
         const g = showreel.svg.selectAll(".symbol");
         g.selectAll(".x.axis.x0.axis0").remove();
-        showreel.setXAxis(g, showreel.gHeight, 0, 1);        
+        showreel.setXAxis(g, showreel.gHeight, 0, 1);
       }
 
       setTimeout(() => {
