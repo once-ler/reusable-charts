@@ -24,7 +24,8 @@ export const createGrid = showreel => () => {
     showreel.clusterize = new Clusterize({
       scrollId: 'scrollArea',
       contentId: 'contentArea',
-      rows_in_block: 10
+      rows_in_block: 10,
+      no_data_text: 'Waiting...'
     })
   }, 400)
 }

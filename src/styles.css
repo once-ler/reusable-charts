@@ -377,3 +377,12 @@ input {
 .clusterize tr:nth-child(even) {background: #f8f3f3;}
 .clusterize tr:nth-child(odd) {background: #ffffff;}
 .clusterize tr {vertical-align:top;}
+
+/* nprogress */
+#nprogress .bar {
+  background: #80f0b8;
+  height: 3px;
+}
+#nprogress .peg {
+  box-shadow: 0 0 15px #80f0b8, 0 0 15px #80f0b8 !important;
+}

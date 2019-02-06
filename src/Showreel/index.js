@@ -1,4 +1,6 @@
 /* @flow */
+import '../globals'
+
 import {
   drawLines, drawHorizons
 } from './draw'
@@ -12,8 +14,8 @@ import {
 } from './grid'
 
 import {
-  getReddit
-} from './grid/__test__/getReddit'
+  getReddit, getStatic
+} from './grid/__test__'
 
 import {
   area,
@@ -224,6 +226,10 @@ const Showreel = {
 
   testGetReddit() {
     return getReddit(this)('dinosuars')
+  },
+
+  testGetStatic(search) {
+    return getStatic(this)(search)
   },
 
   translateHelper(n) {

@@ -31,6 +31,11 @@ export const config = showreel => (options) => {
     showreel.hoverHelper();
     showreel.createNavCells();
     showreel.createGrid();
+    NProgress.configure({
+      parent: '#pointer.rectangle', 
+      showSpinner: false,
+      minimum: 0.25
+    })
 
     setTimeout(() => {
       showreel.resizeOnce = true;

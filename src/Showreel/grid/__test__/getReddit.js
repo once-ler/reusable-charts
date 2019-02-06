@@ -60,12 +60,14 @@ export const getReddit = showreel => search => {
     th.innerHTML = `<th style="60px;">ROW</th>${h}`
 
     showreel.clusterize.update(dset)
+    setTimeout(() => NProgress.done(), 200)
   }
 
   const endpoint = "https://www.reddit.com/search.json?restrict_sr=1&limit=10&jsonp=callback&q="
   // let search = 'cats'
 
   const fetchReddit = search => {
+    NProgress.start()
     const url_ = endpoint + search;
 
     jsonp(url_, {param : 'jsonp'}, processCallback)

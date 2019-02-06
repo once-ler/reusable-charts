@@ -6,7 +6,6 @@ export const handleNodeClick = showreel => (d, i) => {
   // When the user has already clicked on a node, we must wait for the user to close the popup.
   if (showreel.userClickedData) return; 
 
-  const symbol = d.key
   const x = d3.select('.date-label tspan.tspan-0').text()
   
   let dtClicked
@@ -33,9 +32,15 @@ export const handleNodeClick = showreel => (d, i) => {
   // Fetch data
   
   console.log(dtClicked)
-
-  showreel.testGetReddit()
-
+  const search = {
+    toStore: d.key.toLowerCase(),
+    fromDateTime: moment(dtClicked).subtract(7, 'days').toISOString().slice(0, 23),
+    toDateTime: moment(dtClicked).add(7, 'days').toISOString().slice(0, 23)
+  }
+  console.log(search)
+  // showreel.testGetReddit()
+  showreel.testGetStatic()
+  
   // Make sure the display is visible
   // console.log(d3.event.pageX, d3.event.pageY, showreel.absoluteCoordinates.ROOT.width)
   if ((d3.event.pageX + 500) > showreel.absoluteCoordinates.ROOT.width) {

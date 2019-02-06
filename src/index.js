@@ -1,8 +1,11 @@
 /* @flow */
-import './styles.css';
+/*
 import 'dc/dc.css';
 import 'ionicons/dist/css/ionicons.min.css'
 import 'clusterize.js/clusterize.css'
+import 'nprogress/nprogress.css'
+import './styles.css';
+*/
 
 export {
   chart$Reduce as Reduce,
