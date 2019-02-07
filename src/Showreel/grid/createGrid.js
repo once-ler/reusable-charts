@@ -25,6 +25,7 @@ export const createGrid = showreel => () => {
       scrollId: 'scrollArea',
       contentId: 'contentArea',
       rows_in_block: 10,
+      blocks_in_cluster: 2,
       no_data_text: 'Waiting...'
     })
   }, 400)

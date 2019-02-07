@@ -31,19 +31,18 @@ export const handleNodeClick = showreel => (d, i) => {
   d3.select('#clusterize-grid').classed('not-visible', false)
   // Fetch data
   
-  console.log(dtClicked)
   const search = {
     toStore: d.key.toLowerCase(),
-    fromDateTime: moment(dtClicked).subtract(7, 'days').toISOString().slice(0, 23),
-    toDateTime: moment(dtClicked).add(7, 'days').toISOString().slice(0, 23)
+    fromDateTime: moment(dtClicked).subtract(3, 'days').toISOString().slice(0, 23),
+    toDateTime: moment(dtClicked).add(3, 'days').toISOString().slice(0, 23)
   }
-  console.log(search)
-  showreel.testGetReddit()
-  // showreel.testGetStatic()
   
+  // showreel.testGetReddit()
+  // showreel.testGetStatic()
+  showreel.getExecutionLog(search)
+
   // Make sure the display is visible
   // console.log(d3.event.pageX, d3.event.pageY, showreel.absoluteCoordinates.ROOT.width)
-  console.log(d3.event.pageX + 700, showreel.absoluteCoordinates.ROOT)
   if ((d3.event.pageX + 700) > showreel.absoluteCoordinates.ROOT.width) {
     let left = `${showreel.absoluteCoordinates.ROOT.width - 660 - ((showreel.margin.right + showreel.margin.left) / 2)}px`,
       width = '700px'

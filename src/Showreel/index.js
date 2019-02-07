@@ -18,6 +18,10 @@ import {
 } from './grid/__test__'
 
 import {
+  getExecutionLog
+} from './grid/remote'
+
+import {
   area,
   axis,
   config,
@@ -153,6 +157,10 @@ const Showreel = {
   formatPercent: d3.format(".2f"),
 
   formatCurrency: d3.format(",.2f"),
+
+  getExecutionLog(search) {
+    getExecutionLog(this)(search)
+  },
 
   getValueForPositionXFromData(xPosition, d) {
     return getValueForPositionXFromData(this)(xPosition, d)

@@ -55,11 +55,26 @@ if (process.env.NODE_ENV === 'production') {
     })
   )
 } else {
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      compress: {
+        screw_ie8: true
+      },
+      comments: false
+    })
+  )
+
   config.entry = ['./example/index.js'];
   config.output = {
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    path: path.resolve(__dirname, 'example')
+    path: path.resolve(__dirname, 'dist')
   };  
 }
 

@@ -106,8 +106,10 @@ export const createNavCells = showreel => () => {
 
         if (!content.classed('not-visible')) {
           const input = content.select('input').node()
-          if (input)
+          if (input) {
             input.focus()
+            input.select()
+          }
         }
       }
     )

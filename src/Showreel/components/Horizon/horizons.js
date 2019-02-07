@@ -21,7 +21,7 @@ export const horizons = showreel => () => {
     d3.min(showreel.data, d => d.values[0].date),
     d3.max(showreel.data, d => d.values[d.values.length - 1].date)
   ]);
-
+  
   showreel.line = d3.svg.line()
     .interpolate("monotone")
     .x(function(d) {
