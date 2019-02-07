@@ -24,7 +24,7 @@ export const handleNodeClick = showreel => (d, i) => {
   showreel.userClickedData = true
 
   // Transform pointer to rectangle
-  d3.select('#pointer').style('width', '500px').style('height', '300px')
+  d3.select('#pointer').style('width', '700px').style('height', '300px')
   d3.select('#pointer').classed('rectangle', true)
   d3.select('#close-btn').classed('show', true);
   // Show grid
@@ -38,15 +38,16 @@ export const handleNodeClick = showreel => (d, i) => {
     toDateTime: moment(dtClicked).add(7, 'days').toISOString().slice(0, 23)
   }
   console.log(search)
-  // showreel.testGetReddit()
-  showreel.testGetStatic()
+  showreel.testGetReddit()
+  // showreel.testGetStatic()
   
   // Make sure the display is visible
   // console.log(d3.event.pageX, d3.event.pageY, showreel.absoluteCoordinates.ROOT.width)
-  if ((d3.event.pageX + 500) > showreel.absoluteCoordinates.ROOT.width) {
-    let left = `${showreel.absoluteCoordinates.ROOT.width - 460 - ((showreel.margin.right + showreel.margin.left) / 2)}px`,
-      width = '500px'
-    if (showreel.absoluteCoordinates.ROOT.width < 500) {
+  console.log(d3.event.pageX + 700, showreel.absoluteCoordinates.ROOT)
+  if ((d3.event.pageX + 700) > showreel.absoluteCoordinates.ROOT.width) {
+    let left = `${showreel.absoluteCoordinates.ROOT.width - 660 - ((showreel.margin.right + showreel.margin.left) / 2)}px`,
+      width = '700px'
+    if (showreel.absoluteCoordinates.ROOT.width < 700) {
       width = `${showreel.absoluteCoordinates.ROOT.width - 10}px`
       left = '10px'
     }

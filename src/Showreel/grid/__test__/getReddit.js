@@ -24,10 +24,10 @@ export const getReddit = showreel => search => {
         switch (i) {
           case 3:
           case 4:
-            w = '300px'
+            w = '40%'
             break
           default:
-            w = '160px'
+            w = '10%'
             break
         }
         m += `<td style="width:${w};">${d}</td>`
@@ -46,10 +46,10 @@ export const getReddit = showreel => search => {
         switch (i) {
           case 3:
           case 4:
-            w = '300px'
+            w = '40%'
             break
           default:
-            w = '160px'
+            w = '10%'
             break
         }
         m += `<th style="width:${w};">${d.toUpperCase()}</th>`

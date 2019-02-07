@@ -362,6 +362,7 @@ input {
   border-collapse: collapse;
   border-spacing: 0px;
   font-size: 11px;
+  table-layout: fixed; 
 }
 
 .clusterize tr:hover td {
@@ -371,9 +372,9 @@ input {
   background-color: yellow;
 }
 .clusterize pre { font-family: "Lucida Console", Monaco, monospace; font-size: 11px; }
-.clusterize th, td { padding: 5px 8px; }  
+.clusterize th, td { word-wrap:break-word; padding: 5px 8px; }  
 .clusterize th {background-color: #f08080;color:White;height:1.3em;} 
-.clusterize td {border-right: 1px solid #ccc;}    
+.clusterize td {word-wrap:break-word; border-right: 1px solid #ccc;}    
 .clusterize tr:nth-child(even) {background: #f8f3f3;}
 .clusterize tr:nth-child(odd) {background: #ffffff;}
 .clusterize tr {vertical-align:top;}
