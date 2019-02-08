@@ -76,8 +76,19 @@ export const createNavCells = showreel => () => {
           })
 
           showreel.updateData(m)
+          showreel.updateXDomain()
+          showreel.drawBetterXAxis()
           
-          showreel.drawLines()          
+          switch (showreel.currentChart) {
+            case 'horizons':
+              showreel.drawHorizons()
+              break
+            case 'lines':
+              showreel.drawLines()
+              break
+            default:
+              break
+          }                    
           
         })
       }
@@ -90,7 +101,6 @@ export const createNavCells = showreel => () => {
     .on('click', function(d1, i) {
         d3.event.stopPropagation()
         
-        // console.log(d3.event.target.nodeName)
         if (~d3.event.target.nodeName.search(/(input|select|div)/i))
           return
         

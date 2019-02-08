@@ -11,8 +11,8 @@ export const lines = showreel => () => {
     .range([showreel.gHeight, 0]);
   
   showreel.x.domain([
-    d3.min(showreel.data, d => d.values[0].date),
-    d3.max(showreel.data, d => d.values[d.values.length - 1].date)
+    d3.min(showreel.data, d => d.values[0] ? d.values[0].date: null),
+    d3.max(showreel.data, d => d.values[d.values.length - 1] ? d.values[d.values.length - 1].date: null)
   ]);
   
   showreel.line = d3.svg.line()

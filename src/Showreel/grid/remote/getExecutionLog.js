@@ -33,12 +33,6 @@ export const getExecutionLog = showreel => search => {
       
       return `<tr><td style="width: 5%;">${idx}</td>${b}</tr>`
     })
-
-    // const dh = res[0]
-    // const {StartTime, FromStore, ToStore, StudyId, WSI, Caller, Response} = dh
-      
-    // const head = {StartTime, FromStore, ToStore, StudyId, WSI, Caller, Response}
-    // const h = Object.keys(head).reduce((m, d, i) => {
     
     let headers = ["Time", "From", "To", "Study", "WSI", "App", "Response"]
     const h = headers.reduce((m, d, i) => { 

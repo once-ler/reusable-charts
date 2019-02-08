@@ -19,7 +19,7 @@ export const updateData = showreel => data => {
 
 export const updateXDomain = showreel => () => {
   const dateRange = {
-    min: d3.min(showreel.data, d => d.values[0].date),
+    min: d3.min(showreel.data, d => d.values[0] ? d.values[0].date: null),
     // max: d3.max(showreel.data, d => d.values[d.values.length - 1].date) 
     max: new Date().getTime()
   }

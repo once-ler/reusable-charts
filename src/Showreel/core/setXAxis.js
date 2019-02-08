@@ -1,10 +1,13 @@
 import moment from 'moment'
 
 export const setXAxis = showreel => (g, h, i, o) => {
+  // on enter() height/gHeight stays the same, so must force remove ticks.
+  g.selectAll(`.x.axis.x${i}.axis${i}`).remove()
+
   const xaxis = d3.svg.axis()
     .scale(showreel.x)
     // .ticks(d < 10 ? 10 : (d > 40 ? 25 : d))
-    .ticks(showreel.monthsCovered < 4 ? 10 : 25)
+    .ticks(showreel.monthsCovered < 12 ? 10 : 25)
     // .ticks(10)
     .tickSize(-h);
   
@@ -20,7 +23,7 @@ export const setXAxis = showreel => (g, h, i, o) => {
 
   let y = 0;
   rule.each(function(d) {
-    if (!showreel.data[y].isDate) {
+    if (showreel.data[y] && !showreel.data[y].isDate) {
       const r = showreel.data[y].keys;
       const text = d3.select(this)
         .selectAll('text')
