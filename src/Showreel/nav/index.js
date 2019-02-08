@@ -68,10 +68,10 @@ export const createNavCells = showreel => () => {
               actualCount: v.length,
               isDate: true,
               keys: [],
-              maxPrice: d3.max(v, function (d) { return d.price; }),
-              sumPrice: d3.sum(v, function (d) { return d.price; }),
-              maxDate: d3.max(v, function (d) { return d.date; }),
-              minDate: d3.min(v, function (d) { return d.date; })
+              maxPrice: d3.max(v, d => d.price),
+              sumPrice: d3.sum(v, d => d.price),
+              maxDate: d3.max(v, d => d.date),
+              minDate: d3.min(v, d => d.date)
             }
           })
 
@@ -88,7 +88,7 @@ export const createNavCells = showreel => () => {
               break
             default:
               break
-          }                    
+          }                  
           
         })
       }

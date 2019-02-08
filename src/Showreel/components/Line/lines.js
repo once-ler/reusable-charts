@@ -33,7 +33,7 @@ export const lines = showreel => () => {
       .selectAll(".rl.line")
       .data(d3.range(1))
 
-      l.enter()
+    l.enter()
       .append("path", ".line")
       .attr("class", "rl line")
       .attr("transform", d => `translate(0,${d * showreel.gHeight})`)

@@ -30,8 +30,6 @@ export const vanish = showreel => () => {
 
   //horizon
   showreel.svg.select("defs")
-    .transition()
-    .duration(showreel.duration)
     .remove();
 
   t.each("end", function() {

@@ -56,13 +56,15 @@ export const getExecutionLog = showreel => search => {
     setTimeout(() => NProgress.done(), 200)
   }
 
-  // const endpoint = '/log/wsi'
-  const endpoint = 'test-downstream.json'
+  const endpoint = '/log/wsi'
   
+  // Use local file when testing
+  // fetch('test-downstream.json')
+
   const fetchExecutionLog = search => {
     showreel.clusterize.clear()
     NProgress.start()
-    /*
+    
     fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -70,8 +72,6 @@ export const getExecutionLog = showreel => search => {
       },
       body: JSON.stringify(search)
     })
-    */
-    fetch('test-downstream.json')
     .then(r => {
       if (!r.ok)
         throw new Error(r.statusText)
@@ -82,5 +82,5 @@ export const getExecutionLog = showreel => search => {
   }
 
   fetchExecutionLog(search)
-
+  
 }

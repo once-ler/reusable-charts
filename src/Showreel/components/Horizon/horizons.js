@@ -45,16 +45,19 @@ export const horizons = showreel => () => {
 
     showreel.y.domain([0, d.maxPrice]);
 
-    d3.select(this)
+    const h = d3.select(this)
       .selectAll(".pl.area")
       .data(d3.range(3))
-      .enter()
+
+    h.enter()
       .insert("path", ".line")
       .attr("class", "pl area")
       .attr("transform", d => `translate(0,${d * showreel.gHeight})`)
       .attr("d", showreel.area(d.values))
       .style("fill", (d, i) => showreel.color2(i))
       .style("fill-opacity", 1e-6);
+
+    h.exit().remove()
 
     showreel.y.domain([0, d.maxPrice / 3]);
 

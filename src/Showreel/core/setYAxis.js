@@ -1,6 +1,8 @@
 export const setYAxis = showreel => () => {
   const g = showreel.svg.selectAll("g.symbol");
-  
+  // on enter() height/gHeight stays the same, so must force remove ticks.
+  g.selectAll(`.y.axis.left`).remove()
+
   g.each(function(d) {
     const y = d3.scale.linear()
       .domain([0, d.maxActualY])
