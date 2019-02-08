@@ -24,9 +24,18 @@ export const createGrid = showreel => () => {
     showreel.clusterize = new Clusterize({
       scrollId: 'scrollArea',
       contentId: 'contentArea',
-      rows_in_block: 10,
-      blocks_in_cluster: 2,
-      no_data_text: 'Waiting...'
+      rows_in_block: 3,
+      keep_parity: true,
+      blocks_in_cluster: 2, 
+      no_data_text: 'Waiting...'      
     })
+
+    showreel.clusterize.callbacks = {
+      clusterChanged: function() {
+        // When window resizes, cluster will lose state and not display.
+        this.refresh(true)
+      }.bind(showreel.clusterize)
+    }
+
   }, 400)
 }

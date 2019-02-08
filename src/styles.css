@@ -362,7 +362,7 @@ input {
   border-collapse: collapse;
   border-spacing: 0px;
   font-size: 11px;
-  table-layout: fixed; 
+  /* table-layout: fixed; */ 
 }
 
 .clusterize tr:hover td {
@@ -371,10 +371,18 @@ input {
 .clusterize tr:hover td pre {
   background-color: yellow;
 }
-.clusterize pre { font-family: "Lucida Console", Monaco, monospace; font-size: 11px; }
+.clusterize pre {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 11px;
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
 .clusterize th, td { word-wrap:break-word; padding: 5px 1px; }  
 .clusterize th {background-color: #f08080;color:White;height:1.3em;} 
-.clusterize td {word-wrap:break-word; border-right: 1px solid #ccc;}    
+.clusterize td {word-break: break-all; word-wrap:break-word; border-right: 1px solid #ccc;padding: 4px;}    
 .clusterize tr:nth-child(even) {background: #f8f3f3;}
 .clusterize tr:nth-child(odd) {background: #ffffff;}
 .clusterize tr {vertical-align:top;}

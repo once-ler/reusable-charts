@@ -1,6 +1,6 @@
 {
   "name": "reusable-charts",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "",
   "main": "lib/index.js",
   "jsnext:main": "dist/reusable-charts.es.js",

@@ -55,6 +55,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   )
 } else {
+  /*
   config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
@@ -69,7 +70,7 @@ if (process.env.NODE_ENV === 'production') {
       comments: false
     })
   )
-
+  */
   config.entry = ['./example/index.js'];
   config.output = {
     filename: '[name]-[hash].js',
