@@ -18,7 +18,8 @@ import {
 } from './grid/__test__'
 
 import {
-  getExecutionLog
+  getExecutionLog,
+  getExecutionAggregationLog
 } from './grid/remote'
 
 import {
@@ -157,6 +158,10 @@ const Showreel = {
   formatPercent: d3.format(".2f"),
 
   formatCurrency: d3.format(",.2f"),
+
+  getExecutionAggregationLog() {
+    getExecutionAggregationLog(this)()
+  },
 
   getExecutionLog(search) {
     getExecutionLog(this)(search)
