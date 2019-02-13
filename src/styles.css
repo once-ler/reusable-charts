@@ -390,7 +390,7 @@ input {
 /* nprogress */
 #nprogress .bar {
   background: #80f0b8;
-  height: 3px;
+  height: 4px;
 }
 #nprogress .peg {
   box-shadow: 0 0 15px #80f0b8, 0 0 15px #80f0b8 !important;

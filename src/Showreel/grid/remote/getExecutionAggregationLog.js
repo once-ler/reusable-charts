@@ -4,8 +4,15 @@ import fetch from 'unfetch'
 const endpoint = '/log/agg'
 
 export const getExecutionAggregationLog = showreel => (monthsElapsed = 60) => {
+  // Initial progress.  This will be reconfigured in showreel.config().
+  NProgress.configure({
+    showSpinner: false,
+    minimum: 0.40
+  })
   
   const onDownloadComplete = (series) => {
+    NProgress.done(true)
+    
     if (!series || series.length === 0) return;
   
     series = series.map(function(d) { 
@@ -60,6 +67,8 @@ export const getExecutionAggregationLog = showreel => (monthsElapsed = 60) => {
     return true
   }
   
+  NProgress.start()
+
   fetch(endpoint, {
     method: 'GET',
     headers: {
