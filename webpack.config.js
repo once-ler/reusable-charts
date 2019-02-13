@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssnano = require('cssnano');
 
 const config = {
   entry: ['./src/index.js'],
@@ -9,7 +12,9 @@ const config = {
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: ExtractTextPlugin.extract({fallback: 'style-loader',
+          use: [{ loader: 'css-loader', options: { minimize: false } }]
+        })
       },
       {
         test: /\.(jpe?g|png|gif|svg|ttf|eot|woff2?)$/i,
@@ -55,7 +60,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   )
 } else {
-  /*
+  
   config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
@@ -68,9 +73,20 @@ if (process.env.NODE_ENV === 'production') {
         screw_ie8: true
       },
       comments: false
+    }),
+    new ExtractTextPlugin('[name]-[chunkhash].css'),
+    new OptimizeCssAssetsPlugin({
+      // assetNameRegExp: /\.optimize\.css$/g,
+      cssProcessor: cssnano,
+      cssProcessorOptions: {
+        safe: true,
+        discardComments: {
+          removeAll: true,
+        },
+      },
     })
   )
-  */
+  
   config.entry = ['./example/index.js'];
   config.output = {
     filename: '[name]-[hash].js',
