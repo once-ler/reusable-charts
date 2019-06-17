@@ -1,13 +1,14 @@
 {
   "name": "reusable-charts",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "",
   "main": "lib/index.js",
   "jsnext:main": "dist/reusable-charts.es.js",
   "module": "dist/reusable-charts.min.js",
   "scripts": {
     "start2": "nodemon src/index.js --exec babel-node",
-    "start": "webpack-dev-server --inline --hot --progress --colors --port 4000 --content-base example --config webpack.config.js",
+    "start:old": "webpack-dev-server --inline --hot --progress --colors --port 4000 --content-base example --config webpack.config.js",
+    "start": "webpack-dev-server --inline --hot --progress --colors --config webpack.config.js",
     "build": "npm run build:lib && npm run build:dist",
     "build:example": "cross-env NODE_ENV=development webpack",
     "prebuild:lib": "rm -rf lib/*",
@@ -45,7 +46,7 @@
     "ionicons": "^4.5.5",
     "lodash": "^4.15.0",
     "moment": "^2.23.0",
-    "nprogress": "^0.2.0",
+    "nprogress": "martinratinaud/nprogress#fix_issue_103",
     "optimize-css-assets-webpack-plugin": "1.3.0",
     "unfetch": "^4.0.1"
   },

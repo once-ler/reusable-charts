@@ -24,10 +24,11 @@ export const getExecutionAggregationLog = showreel => (monthsElapsed = 60) => {
     const fromDate = moment().subtract(monthsElapsed, 'months').toDate()
   
     series = _.filter(series, d => (d.date > fromDate))
-    
+
     const grouped = _.groupBy(series, function(d) { return d.symbol; });
   
     const data = _.map(grouped, function(v, k) {
+      v = _.sortBy(v, d => d.date)
       return {
         key: k,
         values: v,

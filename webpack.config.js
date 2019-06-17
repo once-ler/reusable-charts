@@ -40,12 +40,16 @@ const config = {
       filename: 'index.html',
       template: 'static/index.html',
     })
-  ]
+  ],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  }
 };
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
-    // new webpack.optimize.UglifyJsPlugin({ compressor: { warnings: false } })
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       beautify: false,
@@ -57,10 +61,52 @@ if (process.env.NODE_ENV === 'production') {
         screw_ie8: true
       },
       comments: false
+    }),
+    new ExtractTextPlugin('[name]-[chunkhash].css'),
+    new OptimizeCssAssetsPlugin({
+      // assetNameRegExp: /\.optimize\.css$/g,
+      cssProcessor: cssnano,
+      cssProcessorOptions: {
+        safe: true,
+        discardComments: {
+          removeAll: true,
+        },
+      },
     })
   )
 } else {
   
+  config.devServer = {
+    contentBase: './example',
+    port: 4000,
+    noInfo: false,
+    hot: true,
+    inline: true,
+    proxy: {
+      '/': {
+        bypass: function () {
+          return '/static/index.html';
+        }
+      },
+      '/log/agg': {
+        target: 'http://10.185.38.129:7895',
+        pathRewrite: {
+          '^/log/agg': '/log/agg'
+        },
+        secure: false,
+        changeOrigin: true
+      },
+      '/log/wsi': {
+        target: 'http://10.185.38.129:7895',
+        pathRewrite: {
+          '^/log/wsi': '/log/wsi'
+        },
+        secure: false,
+        changeOrigin: true
+      },      
+    }
+  }
+
   config.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
