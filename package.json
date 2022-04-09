@@ -45,7 +45,7 @@
     "dc": "^2.0.2",
     "ionicons": "^4.5.5",
     "lodash": "^4.15.0",
-    "moment": "^2.23.0",
+    "moment": "^2.29.2",
     "nprogress": "martinratinaud/nprogress#fix_issue_103",
     "optimize-css-assets-webpack-plugin": "1.3.0",
     "unfetch": "^4.0.1"
